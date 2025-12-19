@@ -161,3 +161,63 @@ An **activation function** plays a crucial role in determining the output of a n
 - Deep learning frameworks handle implementation; you just specify them as **hyperparameters**.
 
 
+# The Output Layer in Neural Networks
+
+## Overview
+The **output layer** is the final layer in a neural network where desired predictions are obtained. It produces the **final prediction** after applying its own set of **weights and biases**.
+
+## Key Characteristics
+- There is **only one output layer** in a neural network.
+- The activation function for the output layer may differ from hidden layers depending on the problem.
+  - Example: **Softmax** activation is commonly used for classification problems.
+
+## Output Details
+- The output is a **vector of values** that may require **post-processing** to map them to business-related values.
+  - Example: In classification, the output is a set of probabilities mapped to corresponding classes.
+
+## Determining Number of Nodes
+- Depends on the type of problem:
+  - **Binary Classification**: 1 node (probability of positive outcome).
+  - **Multi-class Classification (n classes)**: n nodes (each node gives probability for one class).
+  - **Regression**: 1 node (produces the numeric output).
+
+## Key Takeaways
+- The output layer completes the neural network structure.
+- Activation function choice is **problem-specific**.
+- Post-processing may be required to convert raw outputs into meaningful predictions.
+## Overall Takeaway
+- In a dataset, each row represents one observation or record, and in machine learning terminology, this is called a sample (or sometimes an instance).
+- In the input dataset, each record or row becomes a sample.
+- Each column represents a feature (or attribute) of that sample.
+- A node in a neural network always has one bias value, regardless of how many inputs it receives.
+- Each node in a hidden layer receives the output of all nodes from the previous layer, not the next layer.
+- Each node in a hidden layer receives the outputs of all nodes from the previous layer.
+- Neural networks are feed-forward (in most cases), meaning data flows from input → hidden layers → output layer.
+
+# Node Output Formula in Layer L
+
+The output of a node in layer **L** is computed as:
+
+\[
+\text{Output} = f\Bigg( \sum_{i=1}^{n} w_i \cdot a_i^{(L-1)} + b \Bigg)
+\]
+
+Where:
+- \( f \) = Activation function
+- \( w_i \) = Weight for input \( i \)
+- \( a_i^{(L-1)} \) = Output from node \( i \) in the previous layer
+- \( b \) = Bias term for the node
+- \( n \) = Number of inputs to the node
+- The activation function most commonly used in the output layer for classification problems is:  Softmax
+
+- Why Softmax?
+- Purpose: Converts raw scores (logits) into probabilities for each class.
+- Output: A vector where:
+- Each element represents the probability of a class.
+- All probabilities sum to 1.
+- Use Case: Multi-class classification problems.
+- Example: Predicting whether an image is a cat, dog, or bird
+- Other case:
+- Binary classification: Often uses Sigmoid in the output layer because it outputs a value between 0 and 1 (interpreted as probability of positive class).
+- Multi-class classification: Uses Softmax because it handles multiple classes and normalizes outputs into probabilities.
+- 
