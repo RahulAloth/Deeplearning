@@ -23,4 +23,6 @@ Deeplearning in Detail( Theory Oriented)
 1. Deeplearning basics
 2. Neural Network Architecture
 3. Training a Neural Network
-4. 
+4. Deep learning example 1
+5. Deep learning example 2
+6. Deep learning example 3
