@@ -79,3 +79,103 @@ Forward propagation is the process of passing input data through the neural netw
 - Forward propagation is **essential for prediction and error calculation**.
 - It is repeated for every sample in the training dataset.
 
+# Measuring Accuracy and Error in Neural Networks
+
+## 1. Overview
+Accuracy and error represent the gap between **predicted values (ŷ)** and **actual target values (y)**. After forward propagation, we compute this gap using specific functions.
+
+---
+
+## 2. Key Concepts
+- **ŷ (y-hat)**: Predicted value from the neural network.
+- **y**: Actual target value from the dataset.
+- **Goal**: Minimize the difference between ŷ and y.
+
+---
+
+## 3. Functions Used
+### **Loss Function**
+- Measures **prediction error for a single sample**.
+
+### **Cost Function**
+- Measures **error across a set of samples**.
+- Provides an **averaging effect** over all errors in the training dataset.
+- Terms **loss function** and **cost function** are often used interchangeably.
+
+---
+
+## 4. Popular Cost Functions
+- **Regression Problems**:
+  - **Mean Square Error (MSE)**:
+    $$ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+  - **Root Mean Square Error (RMSE)**:
+    $$ \text{RMSE} = \sqrt{\text{MSE}} $$
+    - Preferred because it keeps error in the same scale as target variables.
+
+- **Classification Problems**:
+  - **Binary Cross Entropy**: For binary classification.
+  - **Categorical Cross Entropy**: For multi-class classification.
+
+---
+
+## 5. Measuring Accuracy
+1. Send a set of samples through the ANN for **forward propagation**.
+2. Predict outcomes (ŷ).
+3. Compute **prediction error** using a cost function.
+4. Use **backward propagation** to adjust weights and biases based on the error.
+
+---
+
+## 6. Next Steps
+Backward propagation will be discussed in the next section.
+
+
+# Back Propagation in Neural Networks
+
+## 1. Overview
+Back propagation is the process of **adjusting weights and biases** in a neural network to reduce prediction error. It works in the reverse direction of forward propagation.
+
+---
+
+## 2. Purpose
+- After forward propagation, we compute the **overall prediction error**.
+- Each node contributes to this error based on its **weights and biases**.
+- Goal: Adjust weights and biases to **minimize error contribution** from each node.
+
+---
+
+## 3. How Back Propagation Works
+1. **Start from the output layer**:
+   - Compute a **delta value** based on the overall error.
+   - Apply this delta to update weights and biases in the output layer.
+2. **Move to the previous layer**:
+   - Compute a new delta based on updated values in the current layer.
+   - Apply delta to update weights and biases in the previous layer.
+3. **Repeat the process**:
+   - Continue computing deltas and updating weights layer by layer.
+   - Stop when the input layer is reached.
+
+---
+
+## 4. Key Steps
+- Compute **deltas (D1, D2, …)** for each layer.
+- Apply deltas to **weights and biases**.
+- Propagate deltas backward to influence previous layers.
+
+---
+
+## 5. Mathematical Details
+- Back propagation involves **partial derivatives** of the cost function with respect to weights and biases.
+- Deep learning libraries handle these computations internally.
+
+---
+
+## 6. Outcome
+- Updated weights and biases that **reduce overall prediction error**.
+- Prepares the network for the next iteration of training.
+
+---
+
+## 7. Next Steps
+To further reduce error and improve accuracy, we repeat **forward propagation + back propagation** for multiple epochs.
+
