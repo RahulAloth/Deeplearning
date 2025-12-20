@@ -179,3 +179,104 @@ Back propagation is the process of **adjusting weights and biases** in a neural 
 ## 7. Next Steps
 To further reduce error and improve accuracy, we repeat **forward propagation + back propagation** for multiple epochs.
 
+# Gradient Descent in Neural Networks
+
+## 1. Overview
+Gradient Descent is an **optimization algorithm** used to minimize the error (or cost) in a neural network by iteratively adjusting weights and biases. It is the backbone of training deep learning models.
+
+---
+
+## 2. Why Gradient Descent?
+- After **forward propagation**, we compute predictions (ŷ).
+- We calculate **error** using a cost function (e.g., MSE, Cross-Entropy).
+- **Back propagation** computes gradients (partial derivatives) of the cost function with respect to weights and biases.
+- Gradient Descent uses these gradients to **update weights and biases** in the direction that reduces error.
+
+---
+
+## 3. Core Idea
+- The gradient indicates the **direction of steepest increase** in error.
+- To minimize error, we move **in the opposite direction of the gradient**.
+- Update rule:
+  $$ w_{\text{new}} = w_{\text{old}} - \eta \cdot \frac{\partial \text{Cost}}{\partial w} $$
+  $$ b_{\text{new}} = b_{\text{old}} - \eta \cdot \frac{\partial \text{Cost}}{\partial b} $$
+  Where:
+  - \( \eta \) = **learning rate** (controls step size)
+  - \( \frac{\partial \text{Cost}}{\partial w} \) = gradient of cost w.r.t weight
+
+---
+
+## 4. The Process
+1. **Forward Propagation**:
+   - Predict outputs using current weights and biases.
+2. **Compute Error**:
+   - Use a cost function to measure prediction error.
+3. **Back Propagation**:
+   - Calculate gradients for each weight and bias.
+4. **Update Parameters**:
+   - Apply gradient descent update rule.
+5. **Repeat**:
+   - Iterate over multiple epochs until error converges or stops improving.
+
+---
+
+## 5. Behavior of Gradient Descent
+- As iterations progress:
+  - Error **oscillates** but generally moves closer to zero.
+  - We approach a **minimum of the cost function**.
+- **Goal**: Find the global minimum (or a good local minimum) of the cost function.
+
+---
+
+## 6. Key Hyperparameters
+- **Learning Rate (η)**:
+  - Too high → overshooting, divergence.
+  - Too low → slow convergence.
+- **Number of Epochs**:
+  - More epochs → better convergence (up to a point).
+- **Batch Size**:
+  - Full Batch Gradient Descent: Uses entire dataset per update.
+  - Mini-Batch Gradient Descent: Uses small batches (common in deep learning).
+  - Stochastic Gradient Descent (SGD): Uses one sample per update.
+
+---
+
+## 7. Variants of Gradient Descent
+- **SGD (Stochastic Gradient Descent)**:
+  - Faster updates, introduces randomness.
+- **Momentum**:
+  - Adds velocity term to smooth updates.
+- **Adam Optimizer**:
+  - Combines momentum and adaptive learning rates.
+- **RMSProp**:
+  - Adjusts learning rate based on recent gradients.
+
+---
+
+## 8. Challenges & Insights
+- **Local Minima**:
+  - Cost function may have multiple minima.
+- **Vanishing/Exploding Gradients**:
+  - Common in deep networks; mitigated by proper initialization and normalization.
+- **Learning Rate Scheduling**:
+  - Dynamic adjustment of learning rate improves convergence.
+
+---
+
+## 9. Intuition Behind Gradient Descent
+Think of gradient descent as **rolling down a hill**:
+- The hill = cost function surface.
+- The ball = current weights.
+- The slope = gradient.
+- The step size = learning rate.
+- Goal: Reach the lowest point (minimum error).
+
+---
+
+## 10. Summary
+Gradient Descent is **not a single step**, but a **repeated cycle of learning**:
+- Forward Propagation → Compute Error → Back Propagation → Update Weights.
+- Repeat until the model achieves acceptable accuracy.
+
+---
+
