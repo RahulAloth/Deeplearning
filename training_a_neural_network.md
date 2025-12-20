@@ -3,7 +3,6 @@
 ## 1. Overview
 Before training a deep learning model, several steps are required to prepare the data and configure the model. This section covers **setup and initialization** for the training process.
 
----
 
 ## 2. Data Preparation
 - **Convert samples into numeric vectors** using preprocessing techniques.
@@ -43,3 +42,40 @@ Before training a deep learning model, several steps are required to prepare the
 
 ## 5. Next Steps
 Once setup and initialization are complete, the model is ready for **training**.
+
+# Forward Propagation in Neural Networks
+
+## 1. Overview
+Forward propagation is the process of passing input data through the neural network to generate predictions. It is the same as performing an actual prediction using the trained model.
+
+
+## 2. Pre-requisites
+- Input data is organized as **samples and features**.
+- Data is **split into training, validation, and test sets**.
+- For the **training set**:
+  - Each sample has:
+    - **Target value (y)**: Actual value in the training set.
+    - **Predicted value (ŷ)**: Value predicted by the network during forward propagation.
+
+
+## 3. Steps in Forward Propagation
+1. **Send inputs through the neural network**:
+   - For each sample, inputs are fed into the network layer by layer.
+2. **Compute outputs for each node**:
+   - Use the **perceptron formula**:
+     $$ z = \sum (w_i \cdot x_i) + b $$
+     $$ a = \text{activation}(z) $$
+3. **Pass outputs to the next layer** until the final layer.
+4. **Obtain predicted value (ŷ)** at the output layer.
+5. Repeat for **all samples in the training set**.
+
+
+## 4. Collect Predictions
+- Gather all predicted values (ŷ) for the training samples.
+- Compare **ŷ vs y** to compute **error rates** (covered in the next step of training).
+
+
+## 5. Key Points
+- Forward propagation is **essential for prediction and error calculation**.
+- It is repeated for every sample in the training dataset.
+
