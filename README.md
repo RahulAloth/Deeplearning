@@ -24,5 +24,5 @@ Deeplearning in Detail( Theory Oriented)
 2. Neural Network Architecture
 3. Training a Neural Network
 4. Deep learning with structured numeric data example 1 : wine_preprocessing_example.py
-5. Deep learning with unstructured text data example 2 : 
-6. Deep learning example 3
+5. Deep learning with unstructured text data example 2 : classify_news_article.py
+6. Deep learning example 3 
