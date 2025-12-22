@@ -1,3 +1,35 @@
+# 📚 Project Index
+
+This repository covers:
+
+- **Parallel Computing Basics** using HPC concepts
+- **NVIDIA HPC hardware** for deep learning applications
+- **ISO C++ Parallelism** and GPU acceleration
+- **Deep Learning** – Getting started with basics
+- **Artificial Intelligence** – Foundations
+
+---
+
+## ✅ How to Run C++ Code
+
+To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
+
+---
+
+## 🎯 Project Goal
+
+The ultimate goal of this project is to **run a Deep Learning network on a High-Performance Computing (HPC) platform**.  
+To achieve this, **advanced knowledge of C++ and Python** is mandatory.  
+Here, I cover **expert-level theoretical knowledge of Deep Learning**, followed by **practical development, integration, and deployment of deep learning models into Edge AI platforms**.
+
+### Key Highlights:
+- Learn how to use **CUDA libraries** on NVIDIA HPC hardware for GPU acceleration.
+- Understand **ISO C++ parallelism fundamentals**.
+- Designed for engineers with **practical embedded systems and C++ experience**.
+
+**Goal:** Prepare an Embedded Engineer for **AI integration projects** on edge and HPC platforms.
+
+
 
 # 📚 Project Index
 
@@ -6,13 +38,41 @@ This repository covers:
 - **Parallel Computing Basics** using HPC concepts
 - **NVIDIA HPC hardware** for deep learning applications
 - **ISO C++ Parallelism** and GPU acceleration
-- **Deep Learning theory and practical examples**
+- **Deep Learning** – Getting started with basics
+- **Artificial Intelligence** – Foundations
 
 ---
 
 ## ✅ How to Run C++ Code
 
 To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
+
+---
+
+## 🎯 Project Goal
+
+The ultimate goal of this project is to **run a Deep Learning network on a High-Performance Computing (HPC) platform**.  
+To achieve this, **advanced knowledge of C++ and Python** is mandatory.
+
+### Key Highlights:
+- Learn how to use **CUDA libraries** on NVIDIA HPC hardware for GPU acceleration.
+- Understand **ISO C++ parallelism fundamentals**.
+- Designed for engineers with **practical embedded systems and C++ experience**.
+
+**Goal:** Prepare an Embedded Engineer for **AI integration projects** on edge and HPC platforms.
+
+---
+
+## 🛠 Requirements
+
+- A powerful PC and an **Edge Computing Platform** (e.g., NVIDIA Jetson REStudio J4011).
+- Familiarity with **C++**, **Python**, and **parallel programming concepts**.
+
+---
+
+## 📦 Project Structure
+
+The project is divided into **Modules**, **Sub-chapters**, and **Exercises**.
 
 ---
 
@@ -23,6 +83,18 @@ This module includes:
 - ✅ Portable HPC applications using **ISO C++**
 - ✅ GPU acceleration using the **C++ Standard Library**
 - ✅ Fundamentals of **ISO C++ parallelism**
+
+---
+
+## 👤 Current Status
+
+Currently, **all project activities are done by myself with GPT-4 support**.  
+Once the **base version of this project is ready**, I will **invite collaborators** to contribute and expand the work.
+
+---
+
+
+
 
 ### Key Files:
 - introduction.md
@@ -39,12 +111,11 @@ This module includes:
 
 This module includes:
 
-### Theory:
-- [deepLearningIntroductionmd
-- [neurel_network_architecture.md](./neurel_network_architecture](./ Practical Examples:
-- [wine_preprocessing_examplepy  
-  *(Structured numeric data example; uses [winecsv)*
-- [classify_news_article.py](./classifyctured text data example)*
+### Deeplearning Introduction:
+- [Deeplearning Introduction](./deepLearningIntroduction.md)
+- [neurel network architecture](./neurel_network_architecture.md)
+- [neural network example structured data](./wine_preprocessing_example.py)
+- [neural network example unstructured text data](./classify_news_article.py)
 
 ---
 
