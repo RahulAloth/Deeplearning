@@ -26,10 +26,10 @@ This module includes:
 
 ### Key Files:
 - introduction.md
-- [ISO_CPP_Algorithms_HPC_Documentation.md](./ISO_CPP_Algorithms_CPP.md](./Parallel_Algorithms_CPP.mding.md](./VIDIA_Grace_Hopper_Coherent_HW.md](./NVIDIA_Grace_Hopperning_excrcise.md
+- [ISO_CPP_Algorithms_HPC_Documentation.md](./ISO_CPP_Algorithms_CPP.md](./Parallel_Algorithms_CPP.mding.md](./VIDIA_Grace_Hopper_Coherent_HW.md](./NVIDIA_Grace_Hopperning_excrcise.md)
 
 ### C++ Exercises:
-- [main.cpp](./maincises.cpp](./excercises1.cpp- [excercises_2.cpp](./xcercises_3.cpp](./xtra_excercise1.cpp
+- [main.cpp](./maincises.cpp](./excercises1.cpp- [excercises_2.cpp](./xcercises_3.cpp](./xtra_excercise1.cpp)
 
 ---
 
