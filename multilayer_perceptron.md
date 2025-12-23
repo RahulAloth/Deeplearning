@@ -162,5 +162,68 @@ Neural networks learn by:
 
 ---
 
+
 **Tip:** Always visualize the process with a graph of predicted vs actual values to understand how close your model is to the ideal line of best fit.
-I have detailed this as python code in the chapter [multilayer_perceptron.py](./multilayer_perceptron.py)
+- I have detailed this as python code in the chapter [multilayer_perceptron.py](./multilayer_perceptron.py)
+
+
+
+# Transfer and Activation Functions in Neural Networks
+
+## 🧠 Overview
+A neuron in a neural network performs two key operations:
+1. **Transfer (Weighted Sum):** Combines inputs and weights into a single value.
+2. **Activation:** Applies a non-linear function to the weighted sum to introduce non-linearity.
+
+Although often shown as separate steps, both occur inside a single computational node.
+
+---
+
+## ✅ Components of a Node
+- **Inputs:** Features from the dataset (e.g., zip code, ocean proximity).
+- **Weights (w1, w2, ...):** Learnable parameters that scale inputs.
+- **Bias (b):** A constant added to the weighted sum to shift the activation function left or right.
+- **Transfer Function:** Computes:
+- z = (x1 * w1) + (x2 * w2) + ... + b
+- - **Activation Function:** Applies a non-linear function `f(z)` to produce the node’s output.
+
+---
+
+## 🔍 Why Activation Functions?
+- Real-world data is often **non-linear**.
+- Without activation functions, the network would only learn **linear relationships**.
+- Activation functions allow the network to learn **complex decision boundaries**.
+
+---
+
+## 📐 Common Activation Functions
+### 1. **ReLU (Rectified Linear Unit)**
+f(x) = max(0, x)
+- Outputs zero for negative inputs, linear for positive inputs.
+- Popular for deep networks due to efficiency and reduced vanishing gradient issues.
+
+### 2. **Sigmoid**
+f(x) = 1 / (1 + e^(-x))
+
+- Outputs values between 0 and 1.
+- Often used for probabilities in binary classification.
+
+### 3. **Tanh**
+f(x) = (e^x - e^(-x)) / (e^x + e^(-x))
+
+- Outputs values between -1 and 1.
+- Good for centered data; often used in recurrent networks.
+
+---
+
+## ✅ Summary
+- **Transfer function:** Weighted sum + bias.
+- **Activation function:** Adds non-linearity.
+- **Why important?** Enables learning of complex patterns beyond linear relationships.
+
+---
+
+**Tip:** Choose activation functions based on the task:
+- ReLU for hidden layers in deep networks.
+- Sigmoid for binary outputs.
+- Tanh for outputs needing negative and positive ranges.
