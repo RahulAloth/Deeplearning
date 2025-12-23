@@ -92,3 +92,74 @@ Neural network layers allow the network to solve **complex non-linear problems**
 
 ---
 
+
+# How Neural Networks Learn
+
+## 🧠 Overview
+Neural networks learn by identifying patterns in data and adjusting internal parameters (weights and biases) to minimize prediction errors. This process is iterative and relies on mathematical optimization.
+
+---
+
+## ✅ Example Use Case
+**Predicting house prices**  
+- **Type of problem:** Regression (predicting continuous values, not categories)
+- **Goal:** Estimate house price based on features like size, location, etc.
+
+---
+
+## 🔍 Key Concepts
+- **Predicted Value (Y_hat):** Output from the network
+- **Actual Value (Y):** Ground truth from dataset
+- **Transfer Function:** Weighted sum of inputs passed through an activation function
+- **Batch Size:** Number of samples processed in one forward pass
+
+---
+
+## 📐 Learning Process
+### 1. Forward Pass
+- Input data flows through layers → produces predictions (Y_hat)
+- Compare predictions to actual values → compute error
+
+### 2. Loss Function
+For regression, commonly use **Root Mean Squared Error (RMSE):**
+
+``
+RMSE = sqrt( (1/n) * Σ (Y - Y_hat)^2 )
+
+**Steps to compute RMSE:**
+1. Calculate errors for each prediction: `error = Y - Y_hat`
+2. Square each error
+3. Compute the mean of squared errors
+4. Take the square root of the mean
+
+---
+
+### 3. Backpropagation
+- Compute gradients of error with respect to weights
+- Adjust weights to reduce error
+- Repeat until convergence (error cannot decrease further)
+
+---
+
+## 🔄 Intuition
+Think of it as a feedback loop:
+- Forward pass predicts → backward pass corrects
+- Like a game of tennis: back and forth until the model stabilizes
+
+---
+
+## 🏁 Convergence
+When further weight updates no longer reduce error significantly, the network has **learned** the optimal parameters for the given data.
+
+---
+
+### ✅ Summary
+Neural networks learn by:
+- Passing data forward
+- Measuring error
+- Adjusting weights backward
+- Iterating until the cost function is minimized
+
+---
+
+**Tip:** Always visualize the process with a graph of predicted vs actual values to understand how close your model is to the ideal line of best fit.
