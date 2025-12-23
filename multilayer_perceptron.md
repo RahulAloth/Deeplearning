@@ -163,3 +163,4 @@ Neural networks learn by:
 ---
 
 **Tip:** Always visualize the process with a graph of predicted vs actual values to understand how close your model is to the ideal line of best fit.
+I have detailed this as python code in the chapter [multilayer_perceptron.py](./multilayer_perceptron.py)
