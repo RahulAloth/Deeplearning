@@ -227,3 +227,74 @@ f(x) = (e^x - e^(-x)) / (e^x + e^(-x))
 - ReLU for hidden layers in deep networks.
 - Sigmoid for binary outputs.
 - Tanh for outputs needing negative and positive ranges.
+
+# How Neural Networks Learn
+
+## Overview
+Neural networks learn by identifying patterns in data and adjusting internal parameters (weights and biases) to minimize prediction errors. This process is iterative and relies on concepts like **forward pass**, **loss calculation**, and **backpropagation**.
+
+---
+
+## Example Use Case
+**Predicting house prices**  
+- **Type of problem**: Regression (predicting a continuous value, not classifying into categories).
+
+---
+
+## Key Concepts
+### 1. **Predicted Value (`Y_hat`)**
+- Output of the network after a forward pass.
+- Compared against the actual value (`Y`) from the dataset.
+
+### 2. **Weighted Sum**
+`z = sum(x_i * w_i) + b`
+- Combines inputs (\(x_i\)) with weights (\(w_i\)) and bias (\(b\)).
+
+### 3. **Activation Function**
+`Y_hat = f(z)`
+- Applies non-linearity to the weighted sum.
+
+---
+
+## Learning Process
+1. **Forward Pass**
+   - Input data flows through the network.
+   - Produces predictions (`Y_hat`).
+
+2. **Error Calculation**
+   - Difference between actual and predicted values.
+   - For regression, a common metric is **Root Mean Squared Error (RMSE)**:
+RMSE = sqrt( (1/n) * sum( (Y_i - Y_hat_i)^2 ) )
+
+3. **Backpropagation**
+   - Uses calculus to compute gradients.
+   - Adjusts weights and biases to reduce error.
+   - Iterates until convergence (error cannot decrease further).
+
+---
+
+## Batch Size
+- Number of training examples processed in one forward pass.
+- Larger batches = faster computation but higher memory usage.
+
+---
+
+## Why Backpropagation Matters
+- Enables the network to learn by **minimizing the loss function**.
+- Updates weights in the opposite direction of the gradient (gradient descent).
+
+---
+
+## Convergence
+- The point where further training does not significantly reduce error.
+- Indicates the model has learned the best possible weights for the given data.
+
+---
+
+### Summary
+Neural networks learn by:
+- Passing data forward through layers.
+- Measuring prediction error.
+- Adjusting weights using backpropagation until the error is minimized.
+
+---
