@@ -296,5 +296,30 @@ Neural networks learn by:
 - Passing data forward through layers.
 - Measuring prediction error.
 - Adjusting weights using backpropagation until the error is minimized.
+  
+#### Difference Between Transfer Function and Activation Function
+- Transfer Function: Any function that takes the weighted sum of inputs to a neuron and produces an output.
+- Activation Function: A specific type of transfer function that introduces nonlinearity into the network, enabling it to learn complex patterns.
+ - Why This Matters: Without nonlinearity, a neural network would behave like a simple linear model, limiting its ability to capture intricate relationships in data.
+
+#### Advantages of Using a Multilayer Perceptron (MLP) Over a Single-Layer Perceptron
+
+- Learns Complex Relationships: MLP can model more intricate patterns between inputs and outputs, unlike a single-layer perceptron which is limited to linear relationships.
+- Handles Nonlinear Data: Hidden layers introduce nonlinearity, enabling the network to solve problems where input-output relationships are not linear.
+- Better Generalization: MLP can capture underlying patterns in data, improving its ability to generalize to unseen examples rather than just memorizing training data.
+
+#### Steps in Backpropagation Algorithm
+##### Forward Pass
+- Input data flows through the network layer by layer.
+- The network computes the predicted output (Y^\hat{Y}Y^).
+#### Error Calculation
+- Compute the difference between predicted output and actual output using a loss function (e.g., RMSE).
+#### Backward Pass
+- Propagate the error backward through the network.
+- Calculate gradients using derivatives of activation functions.
+- Update weights and biases to reduce error.
+#### Repeat
+- Continue steps 1–3 until the error is minimized or a stopping criterion (e.g., max iterations or minimum error) is met.
+- Why It Matters: Many real-world problems involve nonlinear and complex relationships that a single-layer perceptron cannot handle effectively.
 
 ---
