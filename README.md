@@ -86,6 +86,29 @@ This module includes:
 
 ---
 
+## **Module 2: Deeplearning Introduction**
+- [Deeplearning Introduction](./deepLearningIntroduction.md)
+- [neurel network architecture](./neurel_network_architecture.md)
+- [neural network example structured data](./wine_preprocessing_example.py)
+- [neural network example unstructured text data](./classify_news_article.py)
+
+---
+
+## **Module 3: Advanced Neural Network Topics**
+
+This module includes:
+
+- [Training a Neural Network](./training_a_neural_network.md)
+- [Classify News Article (Code)](./classify_news_article.py)
+- [Multilayer Perceptron (Notes)](./multilayer_perceptron.md)
+- [Multilayer Perceptron (Code)](./multilayer_perceptron.py)
+- [Convolutional Neural Networks](./convolutional_neural_networks.md)
+- [Recurrent Neural Network](./recurrent_neural_network.md)
+- [Transformer Architecture](./transformer_architecture.md)
+- [Types of Neural Networks](./types_of_neural_network.md)
+  
+---
+
 ## 👤 Current Status
 
 Currently, **all project activities are done by myself with GPT-4 support**.  
@@ -109,15 +132,7 @@ Once the **base version of this project is ready**, I will **invite collaborator
 1. **Main tutorial:** [VS Code C++ Guide](https://code.visualstudioions:**
    - [C/C++](https://marketplace# **Module 2: Deep Learning (Theory & Practice)**
 
-This module includes:
 
-### Deeplearning Introduction:
-- [Deeplearning Introduction](./deepLearningIntroduction.md)
-- [neurel network architecture](./neurel_network_architecture.md)
-- [neural network example structured data](./wine_preprocessing_example.py)
-- [neural network example unstructured text data](./classify_news_article.py)
-
----
 
 ## ✅ Suggested Next Steps
 - Add **Quick Start for Python**:
