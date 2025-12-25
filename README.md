@@ -83,7 +83,20 @@ This module includes:
 - ✅ Portable HPC applications using **ISO C++**
 - ✅ GPU acceleration using the **C++ Standard Library**
 - ✅ Fundamentals of **ISO C++ parallelism**
-
+### Files Included:
+- [DAXPY](./DAXPY.md)
+- [ISO C++ Algorithms HPC Documentation](./ISO_CPP_Algorithms_HPC_Documentation.md)
+- [Indexing in Parallel Computing](./Indexing_in_Parallel_Computing.md)
+- [NVIDIA Grace Hopper Coherent HW](./NVIDIA_Grace_Hopper_Coherent_HW.md)
+- [Parallel Algorithms in C++](./Parallel_Algorithms_CPP.md)
+- [Deep Learning Exercise](./deep_learning_excercise.md)
+- [Exercises](./excercises.cpp)
+- [Exercise 1](./excercises_1.cpp)
+- [Exercise 2](./excercises_2.cpp)
+- [Exercise 3](./excercises_3.cpp)
+- [Extra Exercise 1](./extra_excercise_1.cpp)
+- [Introduction](./introduction.md)
+- [Main Program](./main.cpp)
 ---
 
 ## **Module 2: Deeplearning Introduction**
