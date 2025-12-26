@@ -30,4 +30,38 @@ See some important features of it below:
 - PoE capability simplifies deployment in locations where separate power lines are difficult to install.
 
 ## 🧩 About it
-The reComputer Industrial series combines rugged hardware, strong AI performance, and flexible connectivity, making it a reliable platform for deploying edge AI solutions in real-world industrial and commercial environments.
+The reComputer Industrial series combines rugged hardware, strong AI performance, and flexible connectivity, making it a 
+reliable platform for deploying edge AI solutions in real‑world industrial and commercial environments. 
+There are many other variants available, but under 1,000 euros, this one is truly excellent.
+
+# Upgrade to JetPack 6.0 on reComputer J4011
+
+This guide outlines the steps required to upgrade the reComputer J4011 to **JetPack 6.0** using the official BSP package.
+
+---
+
+## 1. Extract the BSP Package
+
+Download the BSP package and extract it:
+
+```bash
+sudo tar -xvf mfi_recomputer-industrial-orin-nx-8g-j201-6.0-36.3.0-2025-09-23.tar.gz
+```
+
+## 2. Enter the Extracted BSP Directory
+Navigate into the BSP folder:
+
+```bash
+cd mfi_recomputer-industrial-orin-j201/
+```
+
+## 3. Flash JetPack (L4T) to the reComputer J4011
+Run the flashing script to install JetPack 6.0:
+
+```bash
+sudo ./tools/kernel_flash/l4t_initrd_flash.sh --flash-only --massflash 1 --network usb0 --showlogs
+```
+
+
+
+
