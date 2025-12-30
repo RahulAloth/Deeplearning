@@ -213,6 +213,12 @@ This guide shows how to do that in **TensorFlow/Keras** and **PyTorch**, plus ho
 pip install tensorflow==2.*  # Keras included
 pip install torch torchvision torchaudio
 pip install matplotlib
+```
+
+## Code for doing this is mentioned here:
+
+[preprocessing_image_dataset](https://github.com/RahulAloth/Deeplearning/blob/main/preprocessing_image_dataset.py)
+
 
 
 
