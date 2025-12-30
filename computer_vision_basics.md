@@ -199,5 +199,20 @@ A **digital image** is essentially a collection of numbers arranged in a grid. T
 - PyTorch Image Tensors
 
 
+# 🧰 Preprocessing Image Data in Python
+
+Before training deep learning models, raw images typically need to be **resized**, **center-cropped** (optional), **batched**, and **normalized**.  
+This guide shows how to do that in **TensorFlow/Keras** and **PyTorch**, plus how to **verify** the preprocessing results.
+
+---
+
+## 📦 Environment
+
+```bash
+# One (or both) of these depending on your stack
+pip install tensorflow==2.*  # Keras included
+pip install torch torchvision torchaudio
+pip install matplotlib
+
 
 
