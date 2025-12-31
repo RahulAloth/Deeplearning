@@ -236,6 +236,9 @@ pip install matplotlib
 > ⚠️ Apply augmentation **only to training data**, not validation or test sets.
 
 ---
+## Code for doing Image Augmentation is mentioned here:
+
+[image_augmentation](https://github.com/RahulAloth/Deeplearning/blob/main/image_augmentation.py)
 
 
 
