@@ -222,3 +222,24 @@ pip install matplotlib
 
 
 
+# 🔄 Augmenting Image Data in Python
+
+**Image Augmentation** is a technique used to artificially increase the diversity of a training dataset by applying random transformations to existing images. This helps improve model generalization without collecting more data.
+
+---
+
+## ✅ Why Augment Images?
+- Prevent **overfitting** by introducing variability.
+- Improve **robustness** to real-world conditions.
+- Simulate changes in **orientation**, **lighting**, and **occlusion**.
+
+> ⚠️ Apply augmentation **only to training data**, not validation or test sets.
+
+---
+
+
+
+
+
+
+
