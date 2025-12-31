@@ -369,3 +369,18 @@ CNNs use two key ideas:
 - Combine convolution, pooling, and weight sharing for optimal performance.
 
 
+### Important Points to remember:
+
+- CNNs typically start with convolutional layers to extract features, followed by pooling layers to reduce spatial dimensions, and end with fully connected layers to make predictions or classifications.
+      - Convolutional → Pooling → Fully Connected
+- Why are convolutional neural networks more efficient than traditional deep neural networks for image data?
+      - They use local connectivity and weight sharing to reduce parameters.
+      - CNNs reduce the number of parameters through local connectivity (focusing on small regions) and weight sharing (reusing filters), making them more efficient than fully connected deep networks for image data.
+- What is the primary purpose of flattening in a convolutional neural network?
+      - to convert feature maps into a one-dimensional input vector
+      - Flattening takes the multi-dimensional output from convolution and pooling layers and reshapes it into a one-dimensional vector that can be fed into fully connected layers.
+- What is the primary function of a pooling layer in a CNN?
+      - to reduce the spatial dimensions of feature maps while preserving key information
+      - Pooling layers (especially max pooling) reduce the width and height of feature maps, making the data more manageable and helping to retain only the most important features.
+- What is the main role of a convolution layer in a CNN?
+      - to detect local patterns in the input data by applying filters
