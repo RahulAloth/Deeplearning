@@ -2,66 +2,20 @@
 
 This repository covers:
 
-- **Parallel Computing Basics** using HPC concepts
-- **NVIDIA HPC hardware** for deep learning applications
-- **ISO C++ Parallelism** and GPU acceleration
+- **Parallel Computing Basics** using HPC concepts (HPC & Parallelism)
 - **Deep Learning** – Getting started with basics
 - **Artificial Intelligence** – Foundations
+- **Convolutional Neural Networks** - Deep Learning with Python
 
 ---
 
-## ✅ How to Run C++ Code
-
-To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
-
----
 
 ## 🎯 Project Goal
 
-The ultimate goal of this project is to **run a Deep Learning network on a High-Performance Computing (HPC) platform**.  
-To achieve this, **advanced knowledge of C++ and Python** is mandatory.  
-Here, I cover **expert-level theoretical knowledge of Deep Learning**, followed by **practical development, integration, and deployment of deep learning models into Edge AI platforms**.
+- The ultimate goal of this project is to **build and run a Deep Learning network on a High-Performance Computing (HPC) platform from scratch**.
+- To successfully follow this project, **advanced knowledge of C++ and Python** is mandatory.
+- Note: This document is intended as a collection of concise reference points or memory aids. It does not cover detailed explanations or theoretical foundations. Readers are expected to have prior knowledge of the underlying concepts.
 
-### Key Highlights:
-- Learn how to use **CUDA libraries** on NVIDIA HPC hardware for GPU acceleration.
-- Understand **ISO C++ parallelism fundamentals**.
-- Designed for engineers with **practical embedded systems and C++ experience**.
-
-**Goal:** Prepare an Embedded Engineer for **AI integration projects** on edge and HPC platforms.
-
-
-
-# 📚 Project Index
-
-This repository covers:
-
-- **Parallel Computing Basics** using HPC concepts
-- **NVIDIA HPC hardware** for deep learning applications
-- **ISO C++ Parallelism** and GPU acceleration
-- **Deep Learning** – Getting started with basics
-- **Artificial Intelligence** – Foundations
-
----
-
-## ✅ How to Run C++ Code
-
-To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
-
----
-
-## 🎯 Project Goal
-
-The ultimate goal of this project is to **run a Deep Learning network on a High-Performance Computing (HPC) platform**.  
-To achieve this, **advanced knowledge of C++ and Python** is mandatory.
-
-### Key Highlights:
-- Learn how to use **CUDA libraries** on NVIDIA HPC hardware for GPU acceleration.
-- Understand **ISO C++ parallelism fundamentals**.
-- Designed for engineers with **practical embedded systems and C++ experience**.
-
-**Goal:** Prepare an Embedded Engineer for **AI integration projects** on edge and HPC platforms.
-
----
 
 ## 🛠 Requirements
 
@@ -130,26 +84,17 @@ Once the **base version of this project is ready**, I will **invite collaborator
 ---
 
 
-
-
-### Key Files:
-- introduction.md
-- [ISO_CPP_Algorithms_HPC_Documentation.md](./ISO_CPP_Algorithms_CPP.md](./Parallel_Algorithms_CPP.mding.md](./VIDIA_Grace_Hopper_Coherent_HW.md](./NVIDIA_Grace_Hopperning_excrcise.md)
-
-### C++ Exercises:
-- [main.cpp](./maincises.cpp](./excercises1.cpp- [excercises_2.cpp](./xcercises_3.cpp](./xtra_excercise1.cpp)
-
 ---
 
-### **Setup VS Code for C++**
-1. **Main tutorial:** [VS Code C++ Guide](https://code.visualstudioions:**
-   - [C/C++](https://marketplace# **Module 2: Deep Learning (Theory & Practice)**
-
-
-
-## ✅ Suggested Next Steps
-- Add **Quick Start for Python**:
+- ✅**Python Example**:
+  
   ```bash
   pip install torch pandas scikit-learn
   python wine_preprocessing_example.py
   python classify_news_article.py
+
+## ✅ How to Run C++ Code
+
+To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
+
+---
