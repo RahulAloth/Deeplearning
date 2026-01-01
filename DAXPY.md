@@ -81,67 +81,6 @@ For this exercise you will work with exercise1.cpp, which is largely identical t
 
 To complete this first exercise, the daxpy function needs to be rewritten to use the C++ standard library algorithm transform and this will require adding some headers. Below are the parts of the file containing TODOs.
 
-Bissal = a little
-Sagen lassen = Let them say.
-Ermutigen = Encourage
-Zubuchen = add -on
-Steuerberater = Tax advicer
-Durch = Through
-Pauschal= lumpsum
-Besorgen = Obtain
-Betrieb = Operation
-Betrifft = regards
-Ausnahme = Exception
-Mittlerweile = In the mean time
-Bissal = a little
-beachten sie = Please note.
-Empfehlungen = Recomendations.
-Inheightlich
-Kneippe
-Sprühen
-Heuflich
-Hinstellen
-Deutlich
-Abgeben
-Verliebt 
-Erledigt
- betreib
-Schefan 
-Mein nachfolger
-Abschluss brinen
-Ensprachen
-Uberliegt
-Gedult
-Erfoldung.
-Auslassen 
-Bewerbung underlaggen
-Augenblick.
-Abteilung
-Verdammte= ശപിക്കുക
-Schaukel = ഊഞ്ഞാലാടുക
-Verwandten = related.
-Gelogen = Lies.
-Abgelehnt = Rejected.
-Beschweren = Complain
-Beschwerde = Complaint.
-Arsch = ass
-Verleibt = Absorbed.
-Klappt = works
-Vereinbaren = Agree
-Leidenschaft = Passion.
-Fettes sorry = Big Sorry
-Bestätigen = confirm
-Versuchen = attempt. 
-Verhandlungen
-Vorgesttelt 
-Angestellt = Employed. 
-Betriebsbedingt kündigung. = Redundancy due to operational reasons. 
-Beratungsangebot = Advice Officer. 
-Muster Angebotsblatt.  = Sample offer sheet. 
-Muster = Pattern.
-Umzug = Relocation.
-Ausspruch kündigungen  = Notice of termination. 
-Ausspruch kündigungen  = Temination Agreement. 
 
 
 
