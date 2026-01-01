@@ -37,6 +37,7 @@ This module includes:
 - ✅ Portable HPC applications using **ISO C++**
 - ✅ GPU acceleration using the **C++ Standard Library**
 - ✅ Fundamentals of **ISO C++ parallelism**
+- (Lessons are not in order* only for this module)
 ### Files Included:
 - [DAXPY](./DAXPY.md)
 - [ISO C++ Algorithms HPC Documentation](./ISO_CPP_Algorithms_HPC_Documentation.md)
