@@ -95,6 +95,16 @@ This module covers CNN fundamentals, preprocessing, augmentation, and practical 
 
 ---
 
+## **Module 5: Build Neural Network with PyTorch**
+
+This module focuses on building a feed‑forward neural network in pure PyTorch and then demonstrates how PyTorch Lightning simplifies training loops, logging, and device handling. It includes hands‑on demos for both classification and regression using synthetic datasets (no external downloads required).
+
+### 📂 Contents
+
+- [Build Neural Network with PyTorch](./build_nn_with_PyTorch.md)
+- [PyTorch Lightning](./pytorch_lightning_demo.py)
+- [PyTorch Lightning — Classification (Code)](./pytorch_lightning_classification.py)
+- [PyTorch Lightning — Regression (Code)](./pytorch_lightning_regression.py)
 
 ## ✅ Notes
 
