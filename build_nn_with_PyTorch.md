@@ -72,7 +72,7 @@ This workshop focuses on building neural networks using **PyTorch** and **PyTorc
 
 ---
 
-## 📚 References
-- [PyTorch Documentation- PyTorch Lightning
+## 📚 Demo
+- [ PyTorch Lightning Demo](https://github.com/RahulAloth/Deeplearning/blob/main/pytorch_lightning_demo.py)
 
 ---
