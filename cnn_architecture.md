@@ -111,7 +111,7 @@ Image (H×W×C)
 - Swin Transformer: Liu et al., “Swin Transformer: Hierarchical Vision Transformer using Shifted Windows,” 2021 — https://arxiv.org/abs/2103.14030
 
 ---
-# Inception Networks (GoogLeNet) — GitHub Notes
+# Inception Networks (GoogLeNet)
 ---
 
 ## Table of Contents
