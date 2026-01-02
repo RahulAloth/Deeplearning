@@ -96,16 +96,6 @@ This module covers CNN fundamentals, preprocessing, augmentation, and practical 
 ---
 
 
-
-## ✅ Notes
-
-- All links are **relative** to the repository root.
-- If you keep per-module folders (e.g., `module4/`), update links like:
-  `./module4/convolutional_neural_networks.md`, etc.
-
-
----
-
 ## ✅ Notes
 
 - All links are **relative** to the repository root.  
