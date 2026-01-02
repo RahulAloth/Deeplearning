@@ -19,10 +19,10 @@ This file, following with python code, walks through a minimal, reproducible pip
 ---
 
 ## 🗂️ Project Structure
-.
-├─ README.md
-├─ requirements.txt
-└─ cnn_cifar10_full.py       # Single script: preprocess + model + training + evaluation
+- .
+- ├─ README.md
+- ├─ requirements.txt
+- └─ cnn_cifar10_full.py       # Single script: preprocess + model + training + evaluation
 
 
 ---
