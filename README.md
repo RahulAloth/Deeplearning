@@ -77,6 +77,42 @@ This module includes:
   
 ---
 
+## **Module 4: Convolutional Neural Networks**
+
+This module covers CNN fundamentals, preprocessing, augmentation, and practical implementations.
+
+
+
+### 📂 Contents
+
+- [Convolutional Neural Networks](./convolutional_neural_networks.md)
+- [Preprocessing Image Dataset](./preprocessing_image_dataset.py)
+- [Image Augmentation](./image_augmentation.py)
+- [CNN with Python (Notes)](./cnn_with_python.md)
+- [CNN CIFAR-10 Full Implementation](./cnn_cifar10_full.py)
+- [CNN Architecture](./cnn_architecture.md)
+- [Computer Vision Basics](./computer_vision_basics.md) ( Revised )
+
+---
+
+
+
+## ✅ Notes
+
+- All links are **relative** to the repository root.
+- If you keep per-module folders (e.g., `module4/`), update links like:
+  `./module4/convolutional_neural_networks.md`, etc.
+
+
+---
+
+## ✅ Notes
+
+- All links are **relative** to the repository root.  
+- If you keep per-module folders (e.g., `module4/`), update links like:  
+  `./module4/convolutional_neural_networks.md`, etc.
+
+
 ## 👤 Current Status
 
 Currently, **all project activities are done by myself with GPT-4 support**.  
