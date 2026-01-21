@@ -1,0 +1,140 @@
+
+# Applying L2 Regularization (Ridge) in Deep Learning
+
+## Overview
+**L2 regularization**, also known as **Ridge Regularization**, is a widely used technique in deep learning to combat **overfitting** by discouraging the model from learning excessively large weight values. Instead of forcing weights to zero (as in L1), L2 regularization keeps weights **small and evenly distributed**, which leads to more stable and generalizable models.
+
+In this study note, you will learn:
+- How to identify overfitting in a baseline model  
+- The intuition behind L2 regularization  
+- How to implement L2 regularization using Keras  
+- How to evaluate its impact on model performance  
+- Additional learning insights and best practices  
+
+---
+
+## Identifying Overfitting
+When training a baseline deep learning model, overfitting typically appears as:
+
+- Training loss decreasing steadily  
+- Validation loss diverging or decreasing at a much slower rate  
+
+This divergence between training and validation loss curves suggests that the model is learning noise and dataset-specific patterns rather than generalizable features.
+
+> 🎯 **Objective:** Reduce this gap and ensure both losses decrease at a similar pace.
+
+---
+
+## What Is L2 Regularization?
+L2 regularization modifies the loss function by adding a penalty equal to the **sum of squared weight values**:
+
+\[
+\text{Loss} = \text{Original Loss} + \lambda \sum w_i^2
+\]
+
+Where:
+- \( w_i \) are the model weights  
+- \( \lambda \) (regularization strength) controls how strongly large weights are penalized  
+
+---
+
+## Key Properties of L2 Regularization
+- Penalizes large weights more strongly than small ones  
+- Encourages smooth, distributed learning across features  
+- Improves numerical stability during training  
+- Reduces variance without drastically increasing bias  
+
+---
+
+## Applying L2 Regularization in Keras
+
+### Step 1: Import the Regularizer
+```python
+from tensorflow.keras.regularizers import l2
+````
+
+### Step 2: Define the Regularized Model
+Apply L2 regularization to the kernel (weights) of each hidden layer.
+```python
+model = Sequential([
+    Dense(128, activation='relu', kernel_regularizer=l2(0.001)),
+    Dense(64, activation='relu', kernel_regularizer=l2(0.001)),
+    Dense(1, activation='sigmoid')
+])
+```
+##### Explanation:
+- kernel_regularizer=l2(0.001) penalizes large weight values
+- 0.001 is a commonly used starting value
+- Higher values increase regularization strength and may cause underfitting
+
+### Step 3: Compile the Model
+
+```python
+model.compile(
+    optimizer='adam',
+    loss='binary_crossentropy',
+    metrics=['accuracy']
+)
+```
+
+### Step 4: Train the Model
+```python
+history = model.fit(
+    X_train,
+    y_train,
+    epochs=15,
+    batch_size=128,
+    validation_split=0.1
+)
+```
+
+#### Training Configuration:
+- epochs = 15: Sufficient iterations to observe training trends
+- batch_size = 128: Efficient gradient updates
+- validation_split = 0.1: Continuous monitoring of generalization
+
+#### Evaluating the Results
+- After training, plot both:
+- Training loss
+- Validation loss
+
+##### Observations
+- ✅ Training and validation loss decrease at a similar rate
+- ✅ No large divergence between curves
+- ✅ Model generalizes better than the baseline
+- This behavior confirms that L2 regularization is effectively limiting overfitting.
+
+##### Why L2 Regularization Works
+- Penalizes squared weight magnitude, making very large weights costly
+- Distributes importance more evenly across features
+- Prevents the model from becoming overly sensitive to individual inputs
+- Enhances generalization on unseen data
+
+##### Additional Learning Points
+###### L2 vs No Regularization
+- Without regularization: large weights → fragile models
+- With L2 regularization: smoother decision boundaries
+- Especially effective for deep networks with many parameters
+
+###### Best Practices
+- ⚖️ Start with small values like 0.001 and tune gradually
+- 🔄 Combine with Dropout for stronger regularization
+- ⏱️ Use Early Stopping for additional overfitting control
+- 📊 Monitor validation metrics closely during training
+
+###### When to Use L2 Regularization
+- ✅ Large or deep neural networks
+- ✅ When all features may be useful
+- ✅ When numerical stability is important
+- ✅ When you want smoother, more robust models
+- 🚫 Avoid overly strong L2 penalties with small datasets
+
+###### Key Takeaways
+- L2 regularization discourages large weights using squared penalties
+- Easy to apply via kernel_regularizer=l2() in Keras
+- Stabilizes training and improves generalization
+- Often preferred over L1 in deep learning architectures
+
+
+
+
