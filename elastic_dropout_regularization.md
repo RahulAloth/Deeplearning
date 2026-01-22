@@ -149,3 +149,72 @@ With dropout:
   - Improves generalization in deep learning models
 
 Both techniques aim to reduce overfitting but are applied in different modeling contexts.
+
+
+
+# Applying Dropout Regularization to a Deep Learning Model
+
+## Overview
+This section explains how to **apply dropout regularization** to a deep learning model in order to **reduce overfitting**. Dropout is introduced into an existing baseline model and its effect is evaluated by comparing training and validation loss curves.
+
+---
+
+## Identifying Overfitting in the Baseline Model
+
+Before applying dropout, a baseline model is trained using preprocessed data.
+
+### Indicators of Overfitting
+- The **training loss continues to decrease**
+- The **validation loss diverges and increases**
+- A **clear gap** appears between training and validation loss curves
+
+This divergence indicates that the model is learning patterns specific to the training data and failing to generalize well to unseen data.
+
+---
+
+## Why Use Dropout Regularization?
+
+**Dropout regularization** helps reduce overfitting by:
+- Randomly deactivating a fraction of neurons during training
+- Preventing neurons from becoming overly dependent on one another
+- Forcing the network to learn more robust and generalizable features
+
+During training, dropout introduces noise into the network, acting as a regularizer.
+
+---
+
+## How Dropout Works
+
+- A fixed percentage of neurons are randomly set to zero during each forward pass
+- Dropped neurons do not participate in:
+  - Forward propagation
+  - Backpropagation
+- A different subset of neurons is dropped at each iteration
+- During inference (testing), dropout is disabled and all neurons are used
+
+---
+
+## Applying Dropout to the Model
+
+### Step 1: Import Dropout Layer
+Dropout is imported from the Keras layers module:
+```python
+from tensorflow.keras.layers import Dropout
+````
+### Step 2: Modify the Model Architecture
+- Dropout layers are added after each hidden (Dense) layer in the network.
+- Example structure:
+```
+
+Dense(...)
+Dropout(0.5)
+Dense(...)
+Dropout(0.5)
+````
+- A dropout rate of 0.5 means that 50% of neurons are deactivated during each training pass.
+### Step 3: Compile the Regularized Model
+After modifying the architecture:
+
+The model is compiled using the same optimizer and loss function as the baseline model
+This ensures a fair comparison between models
+
