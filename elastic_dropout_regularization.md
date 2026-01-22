@@ -212,9 +212,39 @@ Dense(...)
 Dropout(0.5)
 ````
 - A dropout rate of 0.5 means that 50% of neurons are deactivated during each training pass.
+---
 ### Step 3: Compile the Regularized Model
 After modifying the architecture:
 
 The model is compiled using the same optimizer and loss function as the baseline model
 This ensures a fair comparison between models
 
+---
+
+### Step 4: Train the Model
+Training parameters:
+- Epochs: 15
+- Batch size: 128
+- Validation split: 0.1
+- The model is trained for 15 full passes over the dataset while monitoring both training and validation performance.
+
+### Evaluating the Impact of Dropout
+- After training, the training and validation loss curves are plotted again.
+  - Observed Results
+  - Loss curves initially show some divergence
+  - As training progresses, training and validation losses converge
+  - Reduced gap indicates improved generalization
+- This behavior confirms that dropout regularization helps the model avoid overfitting.
+----- 
+
+### Key Takeaways
+
+- Overfitting can be detected by divergence between training and validation loss
+- Dropout randomly disables neurons during training
+- Adding dropout layers after hidden layers is simple and effective
+- Dropout improves generalization by preventing co-adaptation of neurons
+- Properly applied dropout leads to more stable and realistic validation performance
+
+### Conclusion
+- By adding dropout layers to the baseline model and retraining, overfitting is significantly reduced. This demonstrates that dropout regularization is a powerful and practical technique for improving the generalization of deep learning models in Python.
+- 
