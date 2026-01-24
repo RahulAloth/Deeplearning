@@ -393,17 +393,6 @@ plt.show()
 ```
 
 ---
-
-## Repo Structure Suggestion
-```
-.
-├── README.md                   # This study note
-├── notebooks/                  # Optional: your exploratory notebooks
-├── src/
-│   └── model_with_dropout.py   # Your training script
-└── data/                       # Datasets (excluded or sampled)
-```
-
 ## Further Reading
 - Srivastava et al., 2014 — Dropout: A Simple Way to Prevent Neural Networks from Overfitting
 - Keras documentation — Dropout, SpatialDropout1D/2D/3D, GaussianDropout
