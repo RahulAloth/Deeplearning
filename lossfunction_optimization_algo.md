@@ -514,3 +514,372 @@ Loss Surface (SGD Path)
 - RMSProp
 - Adagrad
 
+
+# Mini-Batch Gradient Descent
+
+> **TL;DR**: Mini‑Batch Gradient Descent updates parameters using **small batches** (e.g., 32–1024 samples). It blends the **stability** of Batch GD with the **speed + noise‑benefits** of SGD. It is the most widely used optimization approach in deep learning.
+
+---
+
+## 🚀 What It Is
+
+**Mini‑Batch Gradient Descent** computes gradients using a **small subset** of training examples (a *mini‑batch*), where:
+
+- Batch size **> 1** (unlike SGD)
+- Batch size **< total dataset** (unlike Batch GD)
+- Acts like navigating downhill using information from a **small group** of nearby paths.
+
+This approach provides a **balance** between computational efficiency and stable convergence.
+
+---
+
+## 🔢 Update Rule
+
+Given a mini‑batch \( B \) of examples \( (x_i, y_i) \):
+
+\[
+\theta \leftarrow \theta - \eta \cdot \frac{1}{|B|} \sum_{i \in B} \nabla_\theta \mathcal{L}(\theta; x_i, y_i)
+\]
+
+Where:
+
+- \( \eta \) = learning rate  
+- \( |B| \) = batch size  
+- \( \nabla_\theta \mathcal{L} \) = gradient for each sample in the batch  
+
+---
+
+## ✅ Strengths
+
+### ⚡ Computationally Efficient  
+- Uses vectorization and hardware acceleration (GPUs/TPUs).  
+- Faster than Batch GD since gradients on small batches run efficiently.
+
+### 🔁 More Stable Than SGD  
+- Averages gradient over multiple samples → less noise.  
+- Converges more smoothly than SGD but retains flexibility.
+
+### ⚙️ Flexible Batch Size  
+- Adjust batch size based on:
+  - memory limits  
+  - hardware capabilities  
+  - dataset size  
+  - desired training dynamics  
+
+### 📉 Typically Faster Overall Convergence  
+- Combines:
+  - the **speed** of SGD  
+  - the **stability** of Batch GD  
+
+---
+
+## ⚠️ Limitations
+
+### 🎚️ Choosing the Best Batch Size Is Tricky  
+- Too small → noisy updates (similar to SGD).  
+- Too large → slow, memory‑heavy (similar to Batch GD).  
+
+### 💾 Larger Batches Need More Memory  
+- GPU memory constraints can restrict feasible batch sizes.
+
+### 🎯 Risk of Suboptimal Convergence  
+- Poorly chosen batch sizes may not capture enough data diversity.  
+- Gradients may not approximate true gradient well → suboptimal minima.
+
+---
+
+## 🧭 When to Use
+
+Mini‑Batch Gradient Descent is ideal when:
+
+- Training deep learning models on GPUs/TPUs  
+- Dataset is too large for Batch GD  
+- You want a good trade‑off between:
+  - speed  
+  - stability  
+  - convergence quality  
+
+It is the **default optimization method** in modern deep learning frameworks.
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# Mini-Batch Gradient Descent (Pseudocode)
+
+initialize theta
+
+for epoch in range(num_epochs):
+    shuffle(training_data)
+
+    for batch in mini_batches(training_data, batch_size):
+        grad = gradient_over_batch(theta, batch)
+        theta = theta - lr * grad
+````
+## 🧪 Minimal NumPy Example
+```python
+import numpy as np
+
+# y = 3x + 2 + noise
+np.random.seed(42)
+X = np.random.rand(200, 1)
+y = 3 * X + 2 + 0.1 * np.random.randn(200, 1)
+
+# Add bias
+Xb = np.c_[np.ones((len(X), 1)), X]
+
+theta = np.zeros((2, 1))
+lr = 0.1
+epochs = 20
+batch_size = 16
+
+def mse(theta, Xb, y):
+    return np.mean((Xb @ theta - y) ** 2)
+
+for epoch in range(epochs):
+    idx = np.random.permutation(len(Xb))
+    X_shuf, y_shuf = Xb[idx], y[idx]
+
+    for i in range(0, len(Xb), batch_size):
+        X_batch = X_shuf[i:i+batch_size]
+        y_batch = y_shuf[i:i+batch_size]
+
+        grad = (2 / len(X_batch)) * (X_batch.T @ (X_batch @ theta - y_batch))
+        theta -= lr * grad
+
+print("Learned parameters [bias, weight]:", theta.ravel())
+```
+## ⚖️ Comparison Summary
+```python
+Batch Gradient Descent (whole dataset)
+ + Very stable
+ - Very slow, memory-heavy
+
+SGD (1 sample)
+ + Very fast, good for online learning
+ - Very noisy, unstable
+
+Mini-Batch GD (e.g., 32–1024 samples)
+ + Fast AND stable
+ + Best for GPU training
+ + Default choice in deep learning
+ - Needs tuning of batch size
+```
+## 🛠️ Practical Tips
+
+- Common batch sizes: 32, 64, 128, 256
+- If GPU memory allows, try increasing batch size to speed up training
+- Use learning rate decay for smoother convergence
+- Shuffle dataset each epoch
+- Use momentum, Adam, or RMSProp for even better performance
+## 🧠 Intuition Diagram
+```python
+Mini-Batch Path
+┌────────────────────────────────────┐
+│    • start                         │
+│      ↘      ↘                      │
+│        ↘        ↘                  │
+│          ↘         ↘               │
+│             • (minimum)            │
+│ Less noisy than SGD, faster than BD│
+└────────────────────────────────────┘
+```
+
+## 🔁 Related Optimizers
+- SGD + Momentum
+- Nesterov Momentum
+- Adam (most common)
+- RMSProp
+- Adagrad
+
+# AdaGrad (Adaptive Gradient Algorithm)
+
+> **TL;DR**: AdaGrad adapts the learning rate **per parameter** by scaling it inversely to the square root of all past squared gradients. It is excellent for **sparse data** and **NLP**, but suffers from **continually shrinking learning rates** that can stop learning early.
+
+---
+
+## 🚀 What It Is
+
+**AdaGrad** (Adaptive Gradient Algorithm) is an optimization technique that **automatically adjusts the learning rate** for each parameter based on historical gradient information.
+
+- Parameters with **frequent large gradients** → **smaller learning rate**  
+- Parameters with **rare or small gradients** → **larger learning rate**
+
+This makes AdaGrad especially useful for:
+
+- **Sparse datasets**  
+- **Natural Language Processing**  
+- Models with features of uneven frequency  
+
+---
+
+## 🤖 Why Adaptive Learning Rates Matter
+
+The learning rate controls **how big a step** the model takes toward minimizing the loss.
+
+- **Too high** → diverges or overshoots  
+- **Too low** → slow learning or stuck in flat regions  
+- **Fixed learning rates** (SGD) often require manual tuning  
+
+AdaGrad solves this by **dynamically adjusting** the learning rate during training.
+
+---
+
+## 🔢 Update Rule
+
+Let:
+
+- \( g_t \) = gradient at time step \( t \)  
+- \( G_t \) = sum of squares of all past gradients  
+
+\[
+G_t = G_{t-1} + g_t^2
+\]
+
+AdaGrad update:
+
+\[
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t} + \epsilon} \cdot g_t
+\]
+
+Where:
+
+- \( \eta \) = initial learning rate  
+- \( \epsilon \) = small constant to avoid division by zero  
+
+---
+
+## ✅ Strengths
+
+### 🎛️ 1. Automatically Adjusts Learning Rates  
+No need to hand-tune per-parameter learning rates.  
+Each parameter scales based on its behavior over time.
+
+### 🌐 2. Excellent for Sparse Data  
+Infrequently updated parameters get **higher learning rates**, making AdaGrad ideal for:
+
+- NLP  
+- Recommender systems  
+- Sparse linear models  
+
+### 🧩 3. Simple to Implement  
+Builds on standard gradient descent with one additional accumulator.
+
+### ⚡ 4. Faster Convergence (Early Training)  
+Effective in the early phases thanks to adaptive scaling.
+
+---
+
+## ⚠️ Limitations
+
+### 🪫 1. Learning Rates Shrink Too Much  
+Since squared gradients accumulate **forever**,  
+\( \sqrt{G_t} \) becomes very large → learning rates become *extremely small*.
+
+This causes:
+
+- Training slowdown  
+- Premature stopping  
+- Poor long-term performance  
+
+### 🔄 2. No Mechanism to Reset or Forget  
+Gradient accumulation grows monotonically → AdaGrad cannot “recover” once learning stagnates.
+
+(Optimizers like **RMSProp** and **Adam** were created to fix this.)
+
+### 💾 3. Higher Memory Usage  
+Must store squared gradient history **for every parameter** → expensive for large models.
+
+---
+
+## 🧭 When to Use AdaGrad
+
+Use AdaGrad when:
+
+- Working with **sparse features**  
+- Training NLP or text-based models  
+- Parameters update infrequently  
+- You want a simple, adaptive optimizer  
+
+Avoid AdaGrad for:
+
+- Long training runs  
+- Very deep models  
+- Dense, large-scale tasks (CV, speech, transformer models)
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# AdaGrad Pseudocode
+
+initialize theta
+initialize G = 0  # accumulator for squared gradients
+
+for each iteration:
+    g = gradient(theta)
+    G = G + g * g
+    theta = theta - (lr / (sqrt(G) + epsilon)) * g
+
+```
+## 🧪 Minimal NumPy Example
+
+
+import numpy as np
+
+# Example: optimizing a simple quadratic function
+```python
+lr = 0.1
+epsilon = 1e-8
+
+theta = np.array([5.0])          # initial parameter
+G = np.zeros_like(theta)          # accumulator
+
+def grad(theta):
+    return 2 * theta              # derivative of f(x)=x^2
+
+for t in range(1, 101):
+    g = grad(theta)
+    G += g ** 2
+    adjusted_lr = lr / (np.sqrt(G) + epsilon)
+    theta -= adjusted_lr * g
+
+print("Final theta:", theta)
+```
+## ⚖️ Comparison with Other Optimizers
+```text
+SGD
+ + Simple, low memory
+ - Fixed learning rate
+
+AdaGrad
+ + Adaptive per-parameter learning rate
+ + Great for sparse data
+ - Learning rate decays too much
+
+RMSProp
+ + Fixes AdaGrad’s decaying rate issue
+ - Adds exponential decay
+
+Adam
+ + Adaptive + momentum
+ + Most widely used today
+```
+## 🧠 Intuition Diagram
+
+```text
+AdaGrad Behavior
+┌──────────────────────────────────────┐
+│ Large gradients → G increases        │
+│                 → learning rate ↓    │
+│                                      │
+│ Small gradients → G small            │
+│                 → learning rate ↑    │
+│                                      │
+│ Eventually learning rate becomes too │
+│ small → progress slows dramatically  │
+└──────────────────────────────────────┘
+```text
+
