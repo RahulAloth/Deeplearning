@@ -175,3 +175,187 @@ Choosing the right loss function is crucial for model performance:
 | Sequence Modeling | Sequence Loss |
 
 The loss function is the core driver of training—guiding the optimizer to reduce error and improve the model’s predictive accuracy.
+
+
+# Batch Gradient Descent (BGD)
+
+> **TL;DR**: Batch Gradient Descent updates model parameters by computing the gradient of the loss **over the entire training set** at each step. It’s **stable, deterministic, and simple**, but can be **slow**, **memory-heavy**, and may **get stuck in local minima**.
+
+---
+
+## 🚀 What It Is
+
+**Batch Gradient Descent (BGD)** minimizes a loss function \( \mathcal{L}(\theta) \) by updating parameters \( \theta \) using the gradient computed over the **full dataset**.
+
+- Think of it as planning the “best path downhill” using **all terrain data** before each step.
+- **Deterministic**: Same data + same initialization = same exact training path.
+- **Stable**: Gradients are smooth since they aggregate over all training examples.
+
+---
+
+## 🔢 Update Rule
+
+\[
+\theta \leftarrow \theta - \eta \cdot \nabla_{\theta} \mathcal{L}(\theta; \mathcal{D})
+\]
+
+Where:
+
+- \( \eta \) = learning rate  
+- \( \mathcal{D} \) = entire training dataset  
+- \( \nabla_{\theta} \mathcal{L} \) = gradient of the loss w.r.t. parameters  
+
+---
+
+## ✅ Strengths
+
+- **Stable updates** due to full-dataset gradients.
+- **Reproducible** because each update is deterministic.
+- **Simple to implement**, great for beginners or baseline models.
+
+---
+
+## ⚠️ Limitations
+
+- **Slow** because each iteration requires processing the *entire* dataset.
+- **Memory-intensive** — must load or aggregate over all samples.
+- **Can get stuck** in local minima or saddle points in non-convex loss landscapes.
+- **Slower feedback loop**: updates only happen once per full pass.
+
+---
+
+## 🧭 When to Use
+
+- Dataset is small/medium and fits in memory.
+- You need **reproducibility** (research, verification).
+- Training stability is more important than speed.
+- As a **baseline** when comparing optimizers.
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# Batch Gradient Descent (BGD) - Pseudocode
+
+initialize theta  # model parameters
+for epoch in range(num_epochs):
+    grad = gradient_over_full_dataset(theta, X_train, y_train)
+    theta = theta - lr * grad
+    
+    # Optional monitoring
+    loss = loss_over_dataset(theta, X_train, y_train)
+    log(epoch=epoch, loss=loss)
+```
+    
+## 🧪 Minimal NumPy Example (Linear Regression)
+
+```
+import numpy as np
+
+# y = 3x + 2 + noise
+np.random.seed(42)
+X = np.random.rand(200, 1)
+y = 3 * X + 2 + 0.1 * np.random.randn(200, 1)
+
+# Add bias
+Xb = np.c_[np.ones((len(X), 1)), X]
+
+theta = np.zeros((2, 1))
+lr = 0.1
+epochs = 2000
+
+def mse(theta, Xb, y):
+    return np.mean((Xb @ theta - y) ** 2)
+
+for epoch in range(epochs):
+    y_pred = Xb @ theta
+    grad = (2 / len(Xb)) * (Xb.T @ (y_pred - y))
+    theta -= lr * grad
+    
+    if epoch % 200 == 0:
+        print(f"epoch={epoch:4d} loss={mse(theta, Xb, y):.6f}")
+
+print("Learned parameters [bias, weight]:", theta.ravel())
+```
+## ⚖️ BGD vs Mini-batch vs SGD
+
+```
+Batch Gradient Descent (batch = full data)
+ + Very stable updates
+ - Very slow, high memory usage
+
+Mini-batch Gradient Descent (batch = 32 to 1024)
+ + Best balance of speed + stability
+ - Slightly noisy gradients
+
+Stochastic Gradient Descent (batch = 1)
+ + Very fast, good at escaping local minima
+ - Highly noisy, unstable updates
+```
+
+## 🛠️ Practical Tips
+
+- Normalize features → faster convergence.
+- Start with learning rate in range 10−310^{-3}10−3 to 10−110^{-1}10−1.
+- Track loss curves to monitor training behavior.
+- Use learning rate schedules (step, cosine, exponential).
+- If dataset is large: switch to mini-batch.
+
+
+## 🧩 Common Pitfalls
+
+- Training too slow → use mini-batch.
+- Runs out of memory → stream data in batches.
+- Model stuck at poor minima → try Momentum or Adam.
+- Loss plateaus early → reduce learning rate.
+
+## 📌 Helpful Checklists
+- Before Training
+
+ - Normalize/standardize data
+ - Dataset fits memory
+ - Learning rate chosen
+ - Seeds fixed (if reproducibility needed)
+
+## During Training
+
+- Log loss
+ - Watch for plateaus
+ - Check gradient norms
+ - Validate on test/val sets
+
+## 🧠 Intuition Diagram
+- Loss Surface (2D slice)
+````Diagram
+┌─────────────────────────────────────┐
+│             • (start)               │
+│               ↘                     │
+│                 ↘                   │
+│                   ↘                 │
+│                     • (minimum)     │
+│                                     │
+│ Each arrow = one BGD step           │
+│ Uses entire dataset → smooth path   │
+└─────────────────────────────────────┘
+````
+
+## 🔁 Related Optimizers
+
+- Momentum
+- Nesterov Momentum
+- Adam
+- Adagrad
+- RMSProp
+- L-BFGS
+
+
+
+
+
+
+
+
+
+
+
