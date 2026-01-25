@@ -883,3 +883,385 @@ AdaGrad Behavior
 └──────────────────────────────────────┘
 ```text
 
+
+# RMSProp (Root Mean Square Propagation)
+
+> **TL;DR**: RMSProp fixes AdaGrad’s biggest issue—**rapidly shrinking learning rates**—by using an **exponential moving average** of squared gradients. This keeps learning rates adaptive without decaying too fast. It works well for **non‑stationary**, **noisy**, and **sparse** problems, including RNNs.
+
+---
+
+## 🚀 What It Is
+
+**RMSProp** is an adaptive learning rate optimization algorithm designed to overcome the limitations of AdaGrad.
+
+While AdaGrad accumulates *all* past squared gradients (making learning rates shrink too quickly), **RMSProp uses a running exponential moving average**, allowing the optimizer to:
+
+- *Forget older gradients*  
+- *Focus on recent gradient behavior*  
+- *Maintain learning rates at useful scales*  
+
+This makes RMSProp more reliable for long training runs and dynamic tasks.
+
+---
+
+## 🔢 Update Rule
+
+RMSProp maintains an exponentially decaying average of squared gradients:
+
+\[
+E[g^2]_t = \beta E[g^2]_{t-1} + (1 - \beta) g_t^2
+\]
+
+Parameters are updated using:
+
+\[
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{E[g^2]_t} + \epsilon} \cdot g_t
+\]
+
+Where:
+
+- \( \eta \): learning rate  
+- \( \beta \): decay rate (commonly 0.9)  
+- \( \epsilon \): smoothing constant (e.g. \(10^{-8}\))  
+- \( g_t \): gradient at time \( t \)  
+
+---
+
+## ✅ Strengths
+
+### 🎚️ 1. Prevents Learning Rate Collapse  
+Unlike AdaGrad, RMSProp does **not** let squared gradients grow indefinitely.  
+This keeps learning rates effective throughout training.
+
+### 🎢 2. Great for Non‑stationary Objectives  
+Ideal when data distribution changes over time, such as:
+
+- Reinforcement learning  
+- Streaming data  
+- Time‑series models  
+
+### 🧠 3. Handles Noisy and Sparse Gradients  
+RMSProp remains stable even with highly variable gradient signals.
+
+### 🔁 4. Good Fit for RNNs  
+Less sensitive to exploding/vanishing gradients → better RNN training stability.
+
+### 🧩 5. Simple to Implement  
+Just adds a decaying average term on top of AdaGrad.
+
+---
+
+## ⚠️ Limitations
+
+### ⚙️ 1. Extra Hyperparameters  
+Requires careful tuning of:
+
+- **Decay rate** \( \beta \)  
+- **Learning rate** \( \eta \)  
+
+Poor choices may cause divergence or slow convergence.
+
+### 🔄 2. Convergence Issues  
+RMSProp may:
+
+- Converge to suboptimal solutions  
+- Fail on some loss surfaces  
+- Require schedule adjustments
+
+### 📘 3. Lacks Strong Theoretical Guarantees  
+Unlike some modern optimizers, RMSProp lacks a rigorous mathematical foundation.  
+This can make behavior harder to predict and debug.
+
+---
+
+## 🧭 When to Use RMSProp
+
+RMSProp is a strong choice for:
+
+- Recurrent neural networks (LSTM, GRU)  
+- Reinforcement learning agents  
+- Noisy or sparse datasets  
+- Non‑stationary problems  
+
+It is often used as a practical middle ground between AdaGrad and Adam.
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# RMSProp Pseudocode
+
+initialize theta
+initialize E = 0         # running average of squared gradients
+beta = 0.9               # decay rate
+
+for each iteration:
+    g = gradient(theta)
+    E = beta * E + (1 - beta) * (g * g)
+    theta = theta - (lr / (sqrt(E) + epsilon)) * g
+````
+
+## 🧪 Minimal NumPy Example
+```python
+
+import numpy as np
+
+lr = 0.01
+beta = 0.9
+epsilon = 1e-8
+
+theta = np.array([5.0])
+E = np.zeros_like(theta)
+
+def grad(theta):
+    return 2 * theta   # derivative of f(x) = x^2
+
+for t in range(1, 101):
+    g = grad(theta)
+    E = beta * E + (1 - beta) * (g ** 2)
+    theta -= (lr / (np.sqrt(E) + epsilon)) * g
+
+print("Final theta:", theta)
+````
+## ⚖️ Comparison with Other Optimizers
+````python
+AdaGrad
+ + Adaptive learning rates
+ - Rates shrink too much → premature stopping
+
+RMSProp
+ + Fixes AdaGrad's decay issue with moving average
+ + Great for RNNs and non-stationary tasks
+ - Needs tuning of decay rate
+
+Adam
+ + RMSProp + Momentum
+ + Most commonly used today
+````
+## 🧠 Intuition Diagram
+- RMSProp Moving Average Concept
+- Old gradients fade → new gradients matter more
+- E[g^2] = 0.9 * previous + 0.1 * current
+### Result:
+ - Learning rate stays healthy
+ - Training continues progressing
+
+
+# Adam (Adaptive Moment Estimation)
+
+> **TL;DR**: Adam combines **Momentum** and **RMSProp**, using exponentially decaying averages of past gradients (first moment) and squared gradients (second moment). It provides **adaptive learning rates**, **momentum-driven updates**, and generally converges **fast** with **minimal tuning**, making it a default choice in deep learning.
+
+---
+
+## 🚀 What It Is
+
+**Adam**, short for **Adaptive Moment Estimation**, is an optimization algorithm that improves upon RMSProp by incorporating **momentum** in addition to adaptive learning rates.
+
+It keeps track of:
+
+- **First moment (m)** → exponential moving average of gradients  
+- **Second moment (v)** → exponential moving average of squared gradients  
+
+By combining both:
+
+- Adam adapts learning rates **per parameter**
+- Adam smooths out updates with **momentum**  
+- Adam avoids AdaGrad’s learning rate decay issue  
+
+This results in fast, stable, efficient optimization.
+
+---
+
+## 🔢 Update Rule
+
+Let:
+
+- \( g_t \) = gradient at step \( t \)  
+- \( m_t \) = first moment (mean)  
+- \( v_t \) = second moment (variance)  
+
+### **Moment Updates**
+\[
+m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t
+\]
+\[
+v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2
+\]
+
+### **Bias Correction**
+\[
+\hat{m}_t = \frac{m_t}{1 - \beta_1^t}
+\]
+\[
+\hat{v}_t = \frac{v_t}{1 - \beta_2^t}
+\]
+
+### **Parameter Update**
+\[
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t
+\]
+
+Defaults (work well in practice):
+
+``
+beta1 = 0.9
+beta2 = 0.999
+epsilon = 1e-8
+
+---
+
+## ✅ Strengths
+
+### ⚡ Fast Convergence  
+Combines momentum + adaptive rates → reaches good solutions quickly.
+
+### 🎛️ Excellent Default Optimizer  
+Works well across many tasks with **default hyperparameters**.  
+Requires less tuning than RMSProp or AdaGrad.
+
+### 🧠 Momentum Stabilizes Updates  
+Smooths noisy gradients, prevents oscillations, accelerates directionally consistent updates.
+
+### 📐 Handles Large-Scale and High-Dimensional Models  
+Efficiently manages large parameter spaces such as:
+
+- Deep neural networks  
+- CNNs  
+- RNNs  
+- Transformers  
+
+### 🧮 Computationally Efficient  
+- Low overhead  
+- Few additional operations  
+- Works well on GPUs/TPUs  
+
+---
+
+## ⚠️ Limitations
+
+### 🎯 Risk of Overfitting  
+Because Adam converges quickly, it may overfit unless:
+
+- Early stopping  
+- Weight decay  
+- Dropout  
+- Regularization techniques  
+
+are applied.
+
+### 💾 Requires Extra Memory  
+Must store two moment vectors (**m** and **v**) → doubles memory use.
+
+### 🎚️ Hyperparameter Sensitivity (in some tasks)  
+Although defaults work well generally, certain tasks (e.g., RL) may require careful tuning.
+
+### 🧩 Sometimes Converges to Worse Minima  
+Some studies show that Adam may converge to:
+
+- Worse generalization performance  
+- Solutions with higher test error  
+
+compared to SGD + Momentum.
+
+(This led to the creation of **AdamW**, which decouples weight decay.)
+
+---
+
+## 🧭 When to Use Adam
+
+Adam is ideal when:
+
+- Working with **large datasets**  
+- Training **very deep networks**  
+- Gradients are **noisy** or **sparse**  
+- You need **fast**, reliable convergence  
+- You want a **strong default optimizer**  
+
+Most deep learning frameworks choose Adam as the **default optimizer**.
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# Adam Optimizer (Pseudocode)
+
+initialize theta
+initialize m = 0
+initialize v = 0
+t = 0
+
+while training:
+    t += 1
+    g = gradient(theta)
+
+    m = beta1 * m + (1 - beta1) * g
+    v = beta2 * v + (1 - beta2) * (g * g)
+
+    m_hat = m / (1 - beta1**t)
+    v_hat = v / (1 - beta2**t)
+
+    theta = theta - (lr / (sqrt(v_hat) + epsilon)) * m_hat
+````
+## 🧪 Minimal NumPy Example
+````
+import numpy as np
+
+lr = 0.1
+beta1 = 0.9
+beta2 = 0.999
+epsilon = 1e-8
+
+theta = np.array([5.0])
+m = np.zeros_like(theta)
+v = np.zeros_like(theta)
+
+def grad(theta):
+    return 2 * theta  # derivative of f(x)=x^2
+
+for t in range(1, 101):
+    g = grad(theta)
+
+    m = beta1 * m + (1 - beta1) * g
+    v = beta2 * v + (1 - beta2) * (g ** 2)
+
+    m_hat = m / (1 - beta1**t)
+    v_hat = v / (1 - beta2**t)
+
+    theta -= (lr / (np.sqrt(v_hat) + epsilon)) * m_hat
+
+print("Final theta:", theta)
+````
+## ⚖️ Comparison with Other Optimizers
+````
+SGD
+ + Simple, strong generalization
+ - Requires tuning, slower convergence
+
+AdaGrad
+ + Adaptive learning rates 
+ - Learning rate decays too fast
+
+RMSProp
+ + Stabilizes AdaGrad
+ - No momentum for fast direction tracking
+
+Adam
+ + RMSProp + Momentum
+ + Fast, stable, adaptive
+ + Best default choice
+````
+
+## 🧠 Intuition Diagram
+````
+Adam = RMSProp (adaptive learning rate)
+     + Momentum (smooth, fast updates)
+
+1st moment  -> tracks direction
+2nd moment  -> scales updates
+bias correction -> prevents early bias
+````
+
+
+
