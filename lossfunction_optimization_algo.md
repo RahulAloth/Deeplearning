@@ -349,13 +349,168 @@ Stochastic Gradient Descent (batch = 1)
 - RMSProp
 - L-BFGS
 
+# Stochastic Gradient Descent (SGD)
+
+> **TL;DR**: Stochastic Gradient Descent updates model parameters using the gradient from **one sample at a time**. It is **fast**, **memory‑efficient**, and can **escape local minima**, but introduces **noise**, **zig‑zag convergence**, and may require **more iterations**.
+
+---
+
+## 🚀 What It Is
+
+**Stochastic Gradient Descent (SGD)** optimizes a model by updating parameters using the gradient computed from **a single training example** rather than the whole dataset.
+
+- Imagine running downhill while adjusting your path based only on your **immediate step**.
+- This introduces **randomness**, making SGD less stable but more flexible.
+- Great for streaming or online learning since it can update the model as new data arrives.
+
+---
+
+## 🔢 Update Rule
+
+\[
+\theta \leftarrow \theta - \eta \cdot \nabla_\theta \mathcal{L}(\theta; x_i, y_i)
+\]
+
+Where:
+
+- \( \eta \): learning rate  
+- \( (x_i, y_i) \): a **single** training example  
+- \( \nabla_\theta \mathcal{L} \): gradient from this example only  
+
+---
+
+## ✅ Strengths
+
+### ⚡ Fast Updates  
+- Each update processes **just one sample** → extremely fast iteration.
+
+### 💾 Memory Efficient  
+- Only one example is needed at a time → good for massive datasets.
+
+### 🌀 Can Escape Local Minima  
+- Random noise helps SGD jump out of poor local minima and explore better solutions.
+
+### 🔄 Online & Streaming Friendly  
+- Suitable for real-time systems where data comes continuously.
+
+---
+
+## ⚠️ Limitations
+
+### 📉 High Variance Updates  
+- Each step may move in wildly different directions.
+- Convergence path looks **noisy** and unpredictable.
+
+### 🐢 More Iterations Needed  
+- The noisy path often requires more total updates to reach good convergence.
+
+### ↔️ Zig‑Zag Behavior  
+- Especially in ravine-shaped loss surfaces, SGD may oscillate, making convergence slower.
+
+### 💻 Limited Parallelization  
+- Since only **one sample** is processed at a time, hard to leverage multi-core CPUs or GPUs efficiently.
+
+---
+
+## 🧭 When to Use
+
+- For **large datasets** that do not fit into memory.
+- When **speed of updates** is important.
+- For **online learning** or streaming data.
+- When you want an optimizer that can **escape local minima**.
+
+---
+
+## 🔁 Pseudocode
+
+```python
+# Stochastic Gradient Descent (SGD) - Pseudocode
+
+initialize theta
+
+for epoch in range(num_epochs):
+    for (x_i, y_i) in training_data:
+        grad = gradient_of_loss(theta, x_i, y_i)
+        theta = theta - lr * grad
+````
+## 🧪 Minimal NumPy Example
+```python
+import numpy as np
+
+# y = 3x + 2 + noise
+np.random.seed(42)
+X = np.random.rand(200, 1)
+y = 3 * X + 2 + 0.1 * np.random.randn(200, 1)
+
+# Add bias
+Xb = np.c_[np.ones((len(X), 1)), X]
+
+theta = np.zeros((2, 1))
+lr = 0.05
+epochs = 10
+
+for epoch in range(epochs):
+    for i in range(len(Xb)):
+        xi = Xb[i:i+1]
+        yi = y[i:i+1]
+
+        grad = 2 * xi.T @ (xi @ theta - yi)
+        theta -= lr * grad
+
+print("Learned parameters [bias, weight]:", theta.ravel())
+```
+## ⚖️ SGD vs Mini-batch vs Batch GD
+```python
+SGD (batch = 1)
+ + Very fast updates
+ + Escapes local minima
+ - Noisy, unstable path
+ - Harder to parallelize
+
+Mini-batch GD (batch = 32–1024)
+ + Best overall trade-off
+ + Works well with GPUs
+ - Slight noise, but manageable
+
+Batch GD (batch = full dataset)
+ + Stable, smooth convergence
+ - Very slow
+ - Memory heavy
+```
+
+## 🛠️ Practical Tips
+
+- Use learning rate decay to stabilize late-stage training.
+- Shuffle the dataset each epoch.
+- Use momentum or advanced methods like SGD + Momentum, Nesterov, or Adam.
+- Track moving average of loss to see true progress.
 
 
+## 🧩 Common Pitfalls
 
+- Too noisy → reduce lr or increase batch size (switch to mini-batch).
+- Stuck oscillating → add momentum.
+- Training taking too long → adjust lr schedule.
+- Poor hardware utilization → consider mini-batch for GPU training.
 
+## 🧠 Intuition Diagram
 
+```Python
+Loss Surface (SGD Path)
+┌───────────────────────────────┐
+│   • start                     │
+│     ↘   ↗  ↘   ↗              │
+│       ↘     ↗   ↘             │
+│          ↘        ↗           │
+│               ✦ minimum       │
+│  Noisy zig-zag path           │
+└───────────────────────────────┘
+````
+## 🔁 Related Optimizers
 
-
-
-
+- SGD + Momentum
+- Nesterov Accelerated Gradient
+- Adam
+- RMSProp
+- Adagrad
 
