@@ -1262,6 +1262,97 @@ Adam = RMSProp (adaptive learning rate)
 2nd moment  -> scales updates
 bias correction -> prevents early bias
 ````
+# 📘 Study Notes: Parameters vs. Hyperparameters in Machine Learning
 
+## 🔹 Overview
+In machine learning and deep learning, **parameters** and **hyperparameters** are foundational concepts, each playing a distinct role in how models are built, trained, and optimized.
 
+---
 
+## 🔧 Parameters
+
+### **Definition**
+Parameters are the internal model variables **learned automatically from training data** during model training.  
+They are updated by optimization algorithms (like gradient descent) to **minimize the loss function**.
+
+### **Characteristics**
+- Learned during training  
+- Not set manually  
+- Define how the model behaves for given inputs  
+- Directly affect predictions  
+
+### **Examples**
+#### **1. Linear Regression**
+For the model:
+
+\[
+Y = WX + B
+\]
+
+- **W** = weight (slope)  
+- **B** = bias (intercept)  
+Both **W** and **B** are parameters learned during training.
+
+#### **2. Neural Networks**
+In neural networks, parameters include:
+- **Weights** between neurons  
+- **Biases** for neurons  
+
+Example network:
+- Input layer: 784 neurons  
+- Hidden layer 1: 512 neurons  
+- Hidden layer 2: 128 neurons  
+- Output layer: 10 neurons  
+
+**Parameter counts:**
+- Input → Hidden1: 784 × 512 weights  
+- Hidden1 → Hidden2: 512 × 128 weights  
+- Hidden2 → Output: 128 × 10 weights  
+- Biases for each neuron in hidden + output layers  
+
+All these are optimized during training using algorithms such as **Stochastic Gradient Descent (SGD)**.
+
+---
+
+## ⚙️ Hyperparameters
+
+### **Definition**
+Hyperparameters are **external configuration settings** defined *before training begins*.  
+Unlike parameters, they are **not learned from data**. Instead, they **control the training process or model structure**.
+
+### **Characteristics**
+- Set manually by the practitioner  
+- Often tuned via trial & error or search strategies  
+- Control training behavior and model architecture  
+- Not updated during training  
+
+### **Analogy: Building a House**
+- **Parameters** → materials (bricks, cement, wood)  
+- **Hyperparameters** → blueprint (number of rooms, layout)  
+
+### **Common Hyperparameters**
+- **Learning rate:** step size during parameter updates  
+- **Batch size:** number of samples per training step  
+- **Number of epochs:** full passes over the dataset  
+- **Network architecture choices:**  
+  - Number of layers  
+  - Number of neurons per layer  
+  - Activation functions  
+
+---
+
+## 🔍 Key Differences at a Glance
+
+| Aspect | Parameters | Hyperparameters |
+|--------|------------|-----------------|
+| Learned from data? | ✔️ Yes | ❌ No |
+| Set manually? | ❌ No | ✔️ Yes |
+| Role | Define model behavior | Control training & architecture |
+| Examples | Weights, biases | Learning rate, batch size, epochs |
+
+---
+
+## 📝 Summary
+- **Parameters** are the internal values (weights, biases) learned by the model to make accurate predictions.  
+- **Hyperparameters** define how the model is trained and structured, and must be chosen before training.  
+- Proper hyperparameter tuning is essential for good model performance.
