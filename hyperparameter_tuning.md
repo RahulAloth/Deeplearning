@@ -415,67 +415,74 @@ To support hyperparameter tuning, we import:
 - **Dropout** layer  
 - **Adam** optimizer
 
-2️⃣ Defining the Tunable Model Function
+# 2️⃣ Defining the Tunable Model Function
 
-Keras Tuner repeatedly calls this function, each time with different hyperparameter values.
-Function Name: build_model(hp)
+- Keras Tuner repeatedly calls this function, each time with different hyperparameter values.
+- Function Name: build_model(hp)
 
-hp is a hyperparameter object that defines which hyperparameters to search.
-The function returns a compiled model ready for evaluation.
+- hp is a hyperparameter object that defines which hyperparameters to search.
+- The function returns a compiled model ready for evaluation.
 
-3️⃣ Model Architecture with Hyperparameters
-a. Model Initialization
-model = keras.Sequential()
-b. Input Layer
+# 3️⃣ Model Architecture with Hyperparameters
+- a. Model Initialization
+- model = keras.Sequential()
+- b. Input Layer
 
-Input shape: 784 (flattened 28×28 image)
+- Input shape: 784 (flattened 28×28 image)
 
-Hidden Layer 1 (Tunable)
-Use hp.Int to tune the number of neurons:
+- Hidden Layer 1 (Tunable)
+- Use hp.Int to tune the number of neurons:
+````
 hp.Int("hidden1", min_value=32, max_value=512, step=32)
-Dropout Layer 1 (Tunable)
-Use hp.Float to tune dropout rate:
+````
+- Dropout Layer 1 (Tunable)
+- Use hp.Float to tune dropout rate:
+````
 hp.Float("dropout1", min_value=0.1, max_value=0.5, step=0.1)
-Hidden Layer 2 (Tunable)
-Number of neurons chosen with:
+````
+- Hidden Layer 2 (Tunable)
+- Number of neurons chosen with:
+````
 hp.Int("hidden2", min_value=16, max_value=128, step=16)
+````
+ - Dropout Layer 2 (Tunable)
+- Same dropout range as earlier:
+````
+  hp.Float("dropout2", min_value=0.1, max_value=0.5, step=0.1)
+````
+#  4️⃣ Output Layer (Not Tuned)
+- Output layer has a fixed number of units:
 
- Dropout Layer 2 (Tunable)
-Same dropout range as earlier:
-hp.Float("dropout2", min_value=0.1, max_value=0.5, step=0.1)
-4️⃣ Output Layer (Not Tuned)
-Output layer has a fixed number of units:
+- 10 units for digit classification (0–9)
+- Dense(10, activation="softmax")
 
-10 units for digit classification (0–9)
-Dense(10, activation="softmax")
-
-5️⃣ Learning Rate (Tunable with hp.Choice)
-We evaluate a set of discrete learning rates:
-
-hp.Choice("learning_rate", values=[0.0001, 0.001, 0.01])
-
-6️⃣ Compiling the Model
-The optimizer uses the selected learning rate.
-
+#5️⃣ Learning Rate (Tunable with hp.Choice)
+- We evaluate a set of discrete learning rates:
+````
+- hp.Choice("learning_rate", values=[0.0001, 0.001, 0.01])
+````
+# 6️⃣ Compiling the Model
+- The optimizer uses the selected learning rate.
+````
   model.compile(
     optimizer=Adam(learning_rate=hp_learning_rate),
     loss="categorical_crossentropy",
     metrics=["accuracy"]
 )
+````
+ - Purpose of the Tunable Function
+- The function:
 
- Purpose of the Tunable Function
-The function:
+- Acts as the architectural blueprint
+- Defines all hyperparameters to explore:
 
-Acts as the architectural blueprint
-Defines all hyperparameters to explore:
-
-Hidden layer sizes
-Dropout rates
-Learning rate
+- Hidden layer sizes
+- Dropout rates
+- Learning rate
 
 
-Is repeatedly invoked during the hyperparameter search
+- Is repeatedly invoked during the hyperparameter search
 
-This allows Keras Tuner to systematically explore the hyperparameter space and find the configuration that maximizes model performance.
+- This allows Keras Tuner to systematically explore the hyperparameter space and find the configuration that maximizes model performance.
 
-Please see the code : ./run_hparam_tuning.py
+- Please see the code : ./run_hparam_tuning.py
