@@ -2,136 +2,161 @@
 
 This repository covers:
 
-- **Parallel Computing Basics** using HPC concepts (HPC & Parallelism)
-- **Deep Learning** – Getting started with basics
-- **Artificial Intelligence** – Foundations
-- **Convolutional Neural Networks** - Deep Learning with Python
+- Parallel Computing using modern ISO C++ and HPC concepts  
+- Deep Learning fundamentals and hands‑on exercises  
+- Artificial Intelligence foundations  
+- Convolutional Neural Networks and Computer Vision  
+- PyTorch and PyTorch Lightning workflows  
+- Generative AI and GAN implementations  
+- Edge‑AI and Jetson setup notes  
 
 ---
 
+# 🎯 Project Goal
 
-## 🎯 Project Goal
-
-- The ultimate goal of this project is to **build and run a Deep Learning network on a High-Performance Computing (HPC) platform from scratch**.
-- To successfully follow this project, **advanced knowledge of C++ and Python** is mandatory.
-- Note: This document is intended as a collection of concise reference points or memory aids. It does not cover detailed explanations or theoretical foundations. Readers are expected to have prior knowledge of the underlying concepts.
-
-
-## 🛠 Requirements
-
-- A powerful PC and an **Edge Computing Platform** (e.g., NVIDIA Jetson REStudio J4011).
-- Familiarity with **C++**, **Python**, and **parallel programming concepts**.
+- Build and run Deep Learning networks on a High‑Performance Computing (HPC) platform from scratch.  
+- Requires strong knowledge of **C++**, **Python**, and **parallel programming**.  
+- This repository acts as a **reference notebook**—concise, practical, and intended for readers who already understand the underlying theory.
 
 ---
 
-## 📦 Project Structure
+# 🛠 Requirements
 
-The project is divided into **Modules**, **Sub-chapters**, and **Exercises**.
+- A powerful PC and an Edge Computing Platform (e.g., NVIDIA Jetson REStudio J4011)  
+- Familiarity with C++, Python, and parallel programming  
+
+---
+
+# 📦 Project Structure
+
+The project is divided into **Modules**, **Sub‑chapters**, and **Exercises**.
 
 ---
 
 ## **Module 1: HPC & Parallelism**
 
-This module includes:
+Focus: ISO C++ parallelism, GPU acceleration, and HPC fundamentals.  
+(Lessons are intentionally unordered in this module.)
 
-- ✅ Portable HPC applications using **ISO C++**
-- ✅ GPU acceleration using the **C++ Standard Library**
-- ✅ Fundamentals of **ISO C++ parallelism**
-- (Lessons are not in order* only for this module)
-### Files Included:
-- [DAXPY](./DAXPY.md)
-- [ISO C++ Algorithms HPC Documentation](./ISO_CPP_Algorithms_HPC_Documentation.md)
-- [Indexing in Parallel Computing](./Indexing_in_Parallel_Computing.md)
-- [NVIDIA Grace Hopper Coherent HW](./NVIDIA_Grace_Hopper_Coherent_HW.md)
-- [Parallel Algorithms in C++](./Parallel_Algorithms_CPP.md)
-- [Deep Learning Exercise](./deep_learning_excercise.md)
-- [Exercises](./excercises.cpp)
-- [Exercise 1](./excercises_1.cpp)
-- [Exercise 2](./excercises_2.cpp)
-- [Exercise 3](./excercises_3.cpp)
-- [Extra Exercise 1](./extra_excercise_1.cpp)
-- [Introduction](./introduction.md)
-- [Main Program](./main.cpp)
----
-
-## **Module 2: Deeplearning Introduction**
-- [Deeplearning Introduction](./deepLearningIntroduction.md)
-- [neurel network architecture](./neurel_network_architecture.md)
-- [neural network example structured data](./wine_preprocessing_example.py)
-- [neural network example unstructured text data](./classify_news_article.py)
+### Files Included
+- [DAXPY.md](./DAXPY.md)  
+- [ISO_CPP_Algorithms_HPC_Documentation.md](./ISO_CPP_Algorithms_HPC_Documentation.md)  
+- [Indexing_in_Parallel_Computing.md](./Indexing_in_Parallel_Computing.md)  
+- [NVIDIA_Grace_Hopper_Coherent_HW.md](./NVIDIA_Grace_Hopper_Coherent_HW.md)  
+- [Parallel_Algorithms_CPP.md](./Parallel_Algorithms_CPP.md)  
+- [deep_learning_excercise.md](./deep_learning_excercise.md)  
+- [excercises.cpp](./excercises.cpp)  
+- [excercises_1.cpp](./excercises_1.cpp)  
+- [excercises_2.cpp](./excercises_2.cpp)  
+- [excercises_3.cpp](./excercises_3.cpp)  
+- [extra_excercise_1.cpp](./extra_excercise_1.cpp)  
+- [introduction.md](./introduction.md)  
+- [main.cpp](./main.cpp)  
 
 ---
 
-## **Module 3: Advanced Neural Network Topics**
+## **Module 2: Deep Learning Introduction**
 
-This module includes:
+Foundational concepts and early‑stage neural network understanding.
 
-- [Training a Neural Network](./training_a_neural_network.md)
-- [Classify News Article (Code)](./classify_news_article.py)
-- [Multilayer Perceptron (Notes)](./multilayer_perceptron.md)
-- [Multilayer Perceptron (Code)](./multilayer_perceptron.py)
-- [Convolutional Neural Networks](./convolutional_neural_networks.md)
-- [Recurrent Neural Network](./recurrent_neural_network.md)
-- [Transformer Architecture](./transformer_architecture.md)
-- [Types of Neural Networks](./types_of_neural_network.md)
-  
----
-
-## **Module 4: Convolutional Neural Networks**
-
-This module covers CNN fundamentals, preprocessing, augmentation, and practical implementations.
-
-
-
-### 📂 Contents
-
-- [Convolutional Neural Networks](./convolutional_neural_networks.md)
-- [Preprocessing Image Dataset](./preprocessing_image_dataset.py)
-- [Image Augmentation](./image_augmentation.py)
-- [CNN with Python (Notes)](./cnn_with_python.md)
-- [CNN CIFAR-10 Full Implementation](./cnn_cifar10_full.py)
-- [CNN Architecture](./cnn_architecture.md)
-- [Computer Vision Basics](./computer_vision_basics.md) ( Revised )
+### Files Included
+- [deepLearningIntroduction.md](./deepLearningIntroduction.md)  
+- [neurel_network_architecture.md](./neurel_network_architecture.md)  
+- [neural_network_basics.md](./neural_network_basics.md)  
+- [neural_network_introduction.md](./neural_network_introduction.md)  
+- [Bias_Variance_Tradeoff.ipynb](./Bias_Variance_Tradeoff.ipynb)  
 
 ---
 
-## **Module 5: Build Neural Network with PyTorch**
+## **Module 3: Convolutional Neural Networks**
 
-This module focuses on building a feed‑forward neural network in pure PyTorch and then demonstrates how PyTorch Lightning simplifies training loops, logging, and device handling. It includes hands‑on demos for both classification and regression using synthetic datasets (no external downloads required).
+CNN fundamentals, preprocessing, augmentation, and full implementations.
 
-### 📂 Contents
-
-- [Build Neural Network with PyTorch](./build_nn_with_PyTorch.md)
-- [PyTorch Lightning](./pytorch_lightning_demo.py)
-- [PyTorch Lightning — Classification (Code)](./pytorch_lightning_classification.py)
-- [PyTorch Lightning — Regression (Code)](./pytorch_lightning_regression.py)
-
-## ✅ Notes
-
-- All links are **relative** to the repository root.  
-- If you keep per-module folders (e.g., `module4/`), update links like:  
-  `./module4/convolutional_neural_networks.md`, etc.
-
-
-## 👤 Current Status
-
-Currently, **all project activities are done by myself with GPT-4 support**.  
-Once the **base version of this project is ready**, I will **invite collaborators** to contribute and expand the work.
+### Files Included
+- [convolutional_neural_networks.md](./convolutional_neural_networks.md)  
+- [cnn_architecture.md](./cnn_architecture.md)  
+- [cnn_with_python.md](./cnn_with_python.md)  
+- [cnn_cifar10_full.py](./cnn_cifar10_full.py)  
+- [computer_vision_basics.md](./computer_vision_basics.md)  
+- [preprocessing_image_dataset.py](./preprocessing_image_dataset.py)  
+- [image_augmentation.py](./image_augmentation.py)  
+- [convolve_and_pool.py](./convolve_and_pool.py)  
 
 ---
 
+## **Module 4: Advanced Neural Network Topics (including AI Foundations)**
+
+Training, optimization, MLPs, RNNs, Transformers, classical ML preprocessing, and more.
+
+### Files Included
+- [training_a_neural_network.md](./training_a_neural_network.md)  
+- [classify_news_article.py](./classify_news_article.py)  
+- [multilayer_perceptron.md](./multilayer_perceptron.md)  
+- [multilayer_perceptron.py](./multilayer_perceptron.py)  
+- [recurrent_neural_network.md](./recurrent_neural_network.md)  
+- [transformer_architecture.md](./transformer_architecture.md)  
+- [types_of_neural_network.md](./types_of_neural_network.md)  
+- [lossfunction_for_dl.md](./lossfunction_for_dl.md)  
+- [lossfunction_optimization_algo.md](./lossfunction_optimization_algo.md)  
+- [hyperparameter_tuning.md](./hyperparameter_tuning.md)  
+- [optimizing_deeplearning_mdl.md](./optimizing_deeplearning_mdl.md)  
+- [L1_Regularization.md](./L1_Regularization.md)  
+- [L2_regularization.mde](./L2_regularization.mde)  
+- [elastic_dropout_regularization.md](./elastic_dropout_regularization.md)  
+- [wine.csv](./wine.csv)  
+- [wine_preprocessing_example.py](./wine_preprocessing_example.py)  
 
 ---
 
-- ✅**Python Example**:
-  
-  ```bash
-  pip install torch pandas scikit-learn
-  python wine_preprocessing_example.py
-  python classify_news_article.py
+## **Module 5: Build Neural Networks with PyTorch**
 
-## ✅ How to Run C++ Code
+Pure PyTorch → PyTorch Lightning progression with classification and regression demos.
 
-To run the C++ examples, set up **Visual Studio Code** in a Linux environment.
+### Files Included
+- [build_nn_with_PyTorch.md](./build_nn_with_PyTorch.md)  
+- [pytorch_lightning_demo.py](./pytorch_lightning_demo.py)  
+- [pytorch_lightning_classification.py](./pytorch_lightning_classification.py)  
+- [pytorch_lightning_regression.py](./pytorch_lightning_regression.py)  
+- [run_hparam_tuning.py](./run_hparam_tuning.py)  
 
 ---
+
+## **Module 6: Generative AI & GANs**
+
+GAN theory, implementation, and experiments with anime faces, Fashion‑MNIST, and text.
+
+### Files Included
+- [GANs.md](./GANs.md)  
+- [GANs_in_detail.md](./GANs_in_detail.md)  
+- [GAN_generator.md](./GAN_generator.md)  
+- [GAN_dcgan_anime.py](./GAN_dcgan_anime.py)  
+- [GAN_anime_real_vs_bad_fake.py](./GAN_anime_real_vs_bad_fake.py)  
+- [GAN_anime_real_vs_good_fake.py](./GAN_anime_real_vs_good_fake.py)  
+- [gan_customer_reviews.py](./gan_customer_reviews.py)  
+- [train_gan_fashion_mnist.py](./train_gan_fashion_mnist.py)  
+- [generative_ai.md](./generative_ai.md)  
+
+---
+
+## **Module 7: Edge AI & Jetson**
+
+Setup and deployment notes for edge‑AI platforms.
+
+### Files Included
+- [setting_up_jetson.md](./setting_up_jetson.md)  
+
+---
+
+# 👤 Current Status
+
+All project activities are currently done individually with GPT‑4 assistance.  
+Once the base version stabilizes, collaborators will be invited to expand the work.
+
+---
+
+# ▶️ Python Example
+
+```bash
+pip install torch pandas scikit-learn
+python wine_preprocessing_example.py
+python classify_news_article.py
